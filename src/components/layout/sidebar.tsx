@@ -29,7 +29,7 @@ const NAV: NavItem[] = [
   { href: "/audit", label: "Audit Internal", icon: ClipboardCheck },
   { href: "/berita", label: "Berita & Pengumuman", icon: Newspaper },
   { href: "/pengguna", label: "Manajemen Pengguna", icon: Users, roles: ["ADMIN"] },
-  { href: "/panduan", label: "Panduan", icon: BookOpen },
+  { href: "/panduan", label: "Panduan Penggunaan", icon: BookOpen },
 ];
 
 export function Sidebar({ role }: { role: Role }) {
