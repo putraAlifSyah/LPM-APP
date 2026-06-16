@@ -1,0 +1,135 @@
+// Schema database LPM Stikes Datu Kamanre
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  nama      String
+  email     String   @unique
+  password  String
+  role      Role     @default(DOSEN)
+  prodi     String?
+  createdAt DateTime @default(now())
+
+  dokumen   Dokumen[]
+  berita    Berita[]
+  auditSesi AuditSesi[]
+}
+
+enum Role {
+  ADMIN
+  AUDITOR
+  DOSEN
+  PIMPINAN
+}
+
+model Dokumen {
+  id          String   @id @default(cuid())
+  judul       String
+  deskripsi   String?
+  kategori    String // e.g. "SPMI", "Kurikulum", "VMTS"
+  standar     String? // e.g. "BAN-PT C.1.1"
+  tags        String? // comma-separated untuk search
+  namaFile    String
+  pathFile    String
+  ukuranFile  Int
+  tipeFile    String
+  versi       Int      @default(1)
+  prodi       String?
+  deleted     Boolean  @default(false)
+  uploadedBy  User     @relation(fields: [userId], references: [id])
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  riwayat RiwayatDokumen[]
+}
+
+model RiwayatDokumen {
+  id        String   @id @default(cuid())
+  dokumenId String
+  dokumen   Dokumen  @relation(fields: [dokumenId], references: [id], onDelete: Cascade)
+  versi     Int
+  pathFile  String
+  namaFile  String
+  catatan   String?
+  createdAt DateTime @default(now())
+}
+
+model Berita {
+  id        String   @id @default(cuid())
+  judul     String
+  isi       String
+  kategori  String // "Berita" | "Pengumuman"
+  penulis   User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model IndikatorMonev {
+  id          String         @id @default(cuid())
+  nama        String
+  standar     String
+  satuan      String
+  targetNilai Float
+  periode     String // e.g. "2024-Ganjil"
+  capaian     CapaianMonev[]
+  createdAt   DateTime       @default(now())
+}
+
+model CapaianMonev {
+  id           String         @id @default(cuid())
+  indikatorId  String
+  indikator    IndikatorMonev @relation(fields: [indikatorId], references: [id], onDelete: Cascade)
+  nilaiCapaian Float
+  keterangan   String?
+  periode      String
+  unit         String?
+  createdAt    DateTime       @default(now())
+}
+
+model AuditSesi {
+  id             String      @id @default(cuid())
+  nama           String
+  tanggalMulai   DateTime
+  tanggalSelesai DateTime
+  auditor        User        @relation(fields: [auditorId], references: [id])
+  auditorId      String
+  unitAudit      String
+  status         StatusAudit @default(RENCANA)
+  temuan         Temuan[]
+  createdAt      DateTime    @default(now())
+}
+
+enum StatusAudit {
+  RENCANA
+  BERLANGSUNG
+  SELESAI
+}
+
+model Temuan {
+  id           String       @id @default(cuid())
+  sesiId       String
+  sesi         AuditSesi    @relation(fields: [sesiId], references: [id], onDelete: Cascade)
+  deskripsi    String
+  kategori     String // "Observasi" | "Ketidaksesuaian Minor" | "Major"
+  standar      String?
+  tindakLanjut String?
+  statusTemuan StatusTemuan @default(OPEN)
+  deadline     DateTime?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+enum StatusTemuan {
+  OPEN
+  PROSES
+  CLOSED
+}
