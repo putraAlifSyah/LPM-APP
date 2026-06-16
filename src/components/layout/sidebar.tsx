@@ -9,8 +9,8 @@ import {
   ClipboardCheck,
   Newspaper,
   Users,
-  BookOpen,
   ShieldCheck,
+  BookOpen,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Role } from "@/lib/auth";
@@ -29,7 +29,7 @@ const NAV: NavItem[] = [
   { href: "/audit", label: "Audit Internal", icon: ClipboardCheck },
   { href: "/berita", label: "Berita & Pengumuman", icon: Newspaper },
   { href: "/pengguna", label: "Manajemen Pengguna", icon: Users, roles: ["ADMIN"] },
-  { href: "/panduan", label: "Panduan Penggunaan", icon: BookOpen },
+  { href: "/panduan", label: "Panduan", icon: BookOpen },
 ];
 
 export function Sidebar({ role }: { role: Role }) {
