@@ -141,7 +141,9 @@ function FieldRow({
 export default async function PanduanPage() {
   const user = await getSession();
 
-  const tocItems = [
+  const role = user?.role ?? "DOSEN";
+
+  const allTocItems = [
     { id: "login", label: "Login ke Sistem", icon: LogIn },
     { id: "navigasi", label: "Navigasi Aplikasi", icon: LayoutDashboard },
     { id: "dashboard", label: "Dashboard", icon: BarChart3 },
@@ -149,10 +151,12 @@ export default async function PanduanPage() {
     { id: "audit", label: "Audit Mutu Internal", icon: ClipboardCheck },
     { id: "monev", label: "Monitoring & Evaluasi", icon: BarChart3 },
     { id: "berita", label: "Berita & Pengumuman", icon: Newspaper },
-    { id: "pengguna", label: "Manajemen Pengguna", icon: Users },
+    { id: "pengguna", label: "Manajemen Pengguna", icon: Users, roles: ["ADMIN"] },
     { id: "profil", label: "Profil Pengguna", icon: UserCircle },
     { id: "faq", label: "FAQ & Troubleshooting", icon: HelpCircle },
   ];
+
+  const tocItems = allTocItems.filter(item => !item.roles || item.roles.includes(role));
 
   return (
     <div className="mx-auto max-w-4xl">
@@ -341,44 +345,50 @@ export default async function PanduanPage() {
             ))}
           </div>
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-            <Upload size={16} className="mr-1 inline" /> Upload Dokumen Baru
-          </h3>
-          <InfoBox variant="warning" title="Hak Akses">
-            Tombol Upload hanya muncul untuk: <strong>Admin</strong>, <strong>Auditor</strong>, <strong>Dosen</strong>. Pimpinan hanya bisa melihat.
-          </InfoBox>
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  <th className="px-3 py-2">Field</th>
-                  <th className="px-3 py-2 text-center">Wajib</th>
-                  <th className="px-3 py-2">Keterangan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <FieldRow name="Judul Dokumen" required desc='Nama dokumen. Contoh: "Kebijakan SPMI 2024"' />
-                <FieldRow name="Kategori" required desc="Pilih: SPMI, Kurikulum, VMTS, Renstra, Laporan, Formulir, Lainnya" />
-                <FieldRow name="Prodi" desc='Pilih prodi jika spesifik, atau "Tidak spesifik"' />
-                <FieldRow name="Standar BAN-PT" desc="Kode standar, contoh: C.1.1, C.6.2" />
-                <FieldRow name="Tags" desc="Kata kunci, pisahkan koma. Contoh: spmi, kebijakan, mutu" />
-                <FieldRow name="Deskripsi" desc="Keterangan singkat tentang isi dokumen" />
-                <FieldRow name="File Dokumen" required desc="Format: PDF, DOCX, XLSX, PPTX. Maks ~10MB" />
-              </tbody>
-            </table>
-          </div>
+          {["ADMIN", "AUDITOR", "DOSEN"].includes(role) && (
+            <>
+              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
+                <Upload size={16} className="mr-1 inline" /> Upload Dokumen Baru
+              </h3>
+              <InfoBox variant="warning" title="Hak Akses">
+                Tombol Upload hanya muncul untuk: <strong>Admin</strong>, <strong>Auditor</strong>, <strong>Dosen</strong>. Pimpinan hanya bisa melihat.
+              </InfoBox>
+              <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <th className="px-3 py-2">Field</th>
+                      <th className="px-3 py-2 text-center">Wajib</th>
+                      <th className="px-3 py-2">Keterangan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <FieldRow name="Judul Dokumen" required desc='Nama dokumen. Contoh: "Kebijakan SPMI 2024"' />
+                    <FieldRow name="Kategori" required desc="Pilih: SPMI, Kurikulum, VMTS, Renstra, Laporan, Formulir, Lainnya" />
+                    <FieldRow name="Prodi" desc='Pilih prodi jika spesifik, atau "Tidak spesifik"' />
+                    <FieldRow name="Standar BAN-PT" desc="Kode standar, contoh: C.1.1, C.6.2" />
+                    <FieldRow name="Tags" desc="Kata kunci, pisahkan koma. Contoh: spmi, kebijakan, mutu" />
+                    <FieldRow name="Deskripsi" desc="Keterangan singkat tentang isi dokumen" />
+                    <FieldRow name="File Dokumen" required desc="Format: PDF, DOCX, XLSX, PPTX. Maks ~10MB" />
+                  </tbody>
+                </table>
+              </div>
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-            <Pencil size={16} className="mr-1 inline" /> Edit &amp; Versi Baru
-          </h3>
-          <p className="text-sm text-slate-600">
-            Di halaman detail dokumen, tersedia tombol:
-          </p>
-          <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
-            <li><strong>Edit</strong> — Ubah metadata (judul, kategori, standar, tags, deskripsi)</li>
-            <li><strong>Versi Baru</strong> — Upload file baru, file lama otomatis disimpan ke riwayat versi</li>
-            <li><strong>Hapus</strong> (Admin saja) — Soft delete, dokumen tidak muncul di daftar tapi masih tersimpan</li>
-          </ul>
+              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
+                <Pencil size={16} className="mr-1 inline" /> Edit &amp; Versi Baru
+              </h3>
+              <p className="text-sm text-slate-600">
+                Di halaman detail dokumen, tersedia tombol:
+              </p>
+              <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
+                <li><strong>Edit</strong> — Ubah metadata (judul, kategori, standar, tags, deskripsi)</li>
+                <li><strong>Versi Baru</strong> — Upload file baru, file lama otomatis disimpan ke riwayat versi</li>
+                {role === "ADMIN" && (
+                  <li><strong>Hapus</strong> (Admin saja) — Soft delete, dokumen tidak muncul di daftar tapi masih tersimpan</li>
+                )}
+              </ul>
+            </>
+          )}
         </Section>
 
         {/* ===== 5. AUDIT ===== */}
@@ -392,41 +402,45 @@ export default async function PanduanPage() {
             <Badge tone="green">✅ SELESAI</Badge>
           </div>
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-            <Plus size={16} className="mr-1 inline" /> Buat Sesi Audit Baru
-          </h3>
-          <InfoBox variant="warning" title="Hak Akses">
-            Hanya <strong>Admin</strong> dan <strong>Auditor</strong> yang dapat membuat sesi audit.
-          </InfoBox>
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  <th className="px-3 py-2">Field</th>
-                  <th className="px-3 py-2 text-center">Wajib</th>
-                  <th className="px-3 py-2">Keterangan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <FieldRow name="Nama Sesi Audit" required desc='Contoh: "AMI Prodi S1 Keperawatan 2024"' />
-                <FieldRow name="Unit / Prodi yang Diaudit" required desc="Pilih unit: Prodi, Institusi, LPPM, Perpustakaan" />
-                <FieldRow name="Tanggal Mulai" required desc="Tanggal rencana audit dimulai" />
-                <FieldRow name="Tanggal Selesai" required desc="Tanggal rencana audit selesai" />
-                <FieldRow name="Auditor" required desc="Pilih auditor dari daftar" />
-              </tbody>
-            </table>
-          </div>
+          {["ADMIN", "AUDITOR"].includes(role) && (
+            <>
+              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
+                <Plus size={16} className="mr-1 inline" /> Buat Sesi Audit Baru
+              </h3>
+              <InfoBox variant="warning" title="Hak Akses">
+                Hanya <strong>Admin</strong> dan <strong>Auditor</strong> yang dapat membuat sesi audit.
+              </InfoBox>
+              <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <th className="px-3 py-2">Field</th>
+                      <th className="px-3 py-2 text-center">Wajib</th>
+                      <th className="px-3 py-2">Keterangan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <FieldRow name="Nama Sesi Audit" required desc='Contoh: "AMI Prodi S1 Keperawatan 2024"' />
+                    <FieldRow name="Unit / Prodi yang Diaudit" required desc="Pilih unit: Prodi, Institusi, LPPM, Perpustakaan" />
+                    <FieldRow name="Tanggal Mulai" required desc="Tanggal rencana audit dimulai" />
+                    <FieldRow name="Tanggal Selesai" required desc="Tanggal rencana audit selesai" />
+                    <FieldRow name="Auditor" required desc="Pilih auditor dari daftar" />
+                  </tbody>
+                </table>
+              </div>
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">Mencatat Temuan</h3>
-          <p className="text-sm text-slate-600">
-            Saat sesi berstatus <strong>BERLANGSUNG</strong>, klik <strong>&quot;Tambah Temuan&quot;</strong> untuk mencatat:
-          </p>
-          <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
-            <li><strong>Deskripsi Temuan</strong> — Uraian detail temuan</li>
-            <li><strong>Kategori</strong> — Observasi, Ketidaksesuaian Minor, atau Major</li>
-            <li><strong>Standar BAN-PT</strong> — Kode standar terkait (opsional)</li>
-            <li><strong>Deadline</strong> — Tenggat waktu tindak lanjut (opsional)</li>
-          </ul>
+              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">Mencatat Temuan</h3>
+              <p className="text-sm text-slate-600">
+                Saat sesi berstatus <strong>BERLANGSUNG</strong>, klik <strong>&quot;Tambah Temuan&quot;</strong> untuk mencatat:
+              </p>
+              <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
+                <li><strong>Deskripsi Temuan</strong> — Uraian detail temuan</li>
+                <li><strong>Kategori</strong> — Observasi, Ketidaksesuaian Minor, atau Major</li>
+                <li><strong>Standar BAN-PT</strong> — Kode standar terkait (opsional)</li>
+                <li><strong>Deadline</strong> — Tenggat waktu tindak lanjut (opsional)</li>
+              </ul>
+            </>
+          )}
 
           <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">Tindak Lanjut &amp; Verifikasi</h3>
           <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-white p-4">
@@ -439,11 +453,15 @@ export default async function PanduanPage() {
           <ul className="ml-4 mt-3 list-disc space-y-1 text-sm text-slate-600">
             <li>Klik <strong>&quot;Tindak Lanjut &amp; Verifikasi&quot;</strong> pada kartu temuan</li>
             <li>Isi rencana/hasil tindak lanjut</li>
-            <li>Admin/Auditor dapat mengubah status: OPEN → PROSES → CLOSED</li>
+            {["ADMIN", "AUDITOR"].includes(role) && (
+              <li>Admin/Auditor dapat mengubah status: OPEN → PROSES → CLOSED</li>
+            )}
           </ul>
-          <InfoBox variant="success" title="Menyelesaikan Sesi">
-            Sesi audit hanya bisa diselesaikan jika <strong>semua temuan</strong> sudah berstatus CLOSED.
-          </InfoBox>
+          {["ADMIN", "AUDITOR"].includes(role) && (
+            <InfoBox variant="success" title="Menyelesaikan Sesi">
+              Sesi audit hanya bisa diselesaikan jika <strong>semua temuan</strong> sudah berstatus CLOSED.
+            </InfoBox>
+          )}
         </Section>
 
         {/* ===== 6. MONEV ===== */}
@@ -458,18 +476,22 @@ export default async function PanduanPage() {
             <Badge tone="red">Belum Tercapai (&lt;75%)</Badge>
           </div>
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-            <Plus size={16} className="mr-1 inline" /> Tambah Indikator &amp; Input Capaian
-          </h3>
-          <InfoBox variant="warning" title="Hak Akses">
-            Hanya <strong>Admin</strong> dan <strong>Dosen</strong> yang dapat menambah indikator dan input capaian.
-          </InfoBox>
-          <p className="text-sm text-slate-600">
-            <strong>Tambah Indikator:</strong> Klik &quot;Indikator Baru&quot;, isi nama, standar BAN-PT, satuan, target nilai, dan periode.
-          </p>
-          <p className="text-sm text-slate-600">
-            <strong>Input Capaian:</strong> Klik tombol &quot;Input&quot; pada baris indikator, masukkan nilai capaian, unit/prodi, dan keterangan.
-          </p>
+          {["ADMIN", "DOSEN"].includes(role) && (
+            <>
+              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
+                <Plus size={16} className="mr-1 inline" /> Tambah Indikator &amp; Input Capaian
+              </h3>
+              <InfoBox variant="warning" title="Hak Akses">
+                Hanya <strong>Admin</strong> dan <strong>Dosen</strong> yang dapat menambah indikator dan input capaian.
+              </InfoBox>
+              <p className="text-sm text-slate-600">
+                <strong>Tambah Indikator:</strong> Klik &quot;Indikator Baru&quot;, isi nama, standar BAN-PT, satuan, target nilai, dan periode.
+              </p>
+              <p className="text-sm text-slate-600">
+                <strong>Input Capaian:</strong> Klik tombol &quot;Input&quot; pada baris indikator, masukkan nilai capaian, unit/prodi, dan keterangan.
+              </p>
+            </>
+          )}
 
           <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
             <BarChart3 size={16} className="mr-1 inline" /> Laporan &amp; Grafik
@@ -490,51 +512,57 @@ export default async function PanduanPage() {
           <p className="text-sm text-slate-600">
             Halaman ini menampilkan daftar berita dan pengumuman dari LPM. Klik kartu berita untuk membaca isi lengkap.
           </p>
-          <InfoBox variant="warning" title="Hak Akses">
-            Hanya <strong>Admin</strong> yang dapat membuat berita atau pengumuman baru.
-          </InfoBox>
-          <p className="text-sm text-slate-600">
-            <strong>Membuat Berita:</strong> Klik &quot;Buat Baru&quot;, isi judul, pilih kategori (Berita / Pengumuman), tulis isi konten, lalu klik &quot;Publikasi&quot;.
-          </p>
+          {role === "ADMIN" && (
+            <>
+              <InfoBox variant="warning" title="Hak Akses">
+                Hanya <strong>Admin</strong> yang dapat membuat berita atau pengumuman baru.
+              </InfoBox>
+              <p className="text-sm text-slate-600">
+                <strong>Membuat Berita:</strong> Klik &quot;Buat Baru&quot;, isi judul, pilih kategori (Berita / Pengumuman), tulis isi konten, lalu klik &quot;Publikasi&quot;.
+              </p>
+            </>
+          )}
         </Section>
 
         {/* ===== 8. PENGGUNA ===== */}
-        <Section id="pengguna" icon={Users} title="Manajemen Pengguna">
-          <InfoBox variant="danger" title="Khusus Admin">
-            Seluruh fitur pada halaman ini hanya tersedia untuk role <strong>Admin</strong>. Menu ini tidak muncul di sidebar untuk role lain.
-          </InfoBox>
+        {role === "ADMIN" && (
+          <Section id="pengguna" icon={Users} title="Manajemen Pengguna">
+            <InfoBox variant="danger" title="Khusus Admin">
+              Seluruh fitur pada halaman ini hanya tersedia untuk role <strong>Admin</strong>. Menu ini tidak muncul di sidebar untuk role lain.
+            </InfoBox>
 
-          <h3 className="mb-2 text-base font-semibold text-slate-800">
-            <Plus size={16} className="mr-1 inline" /> Tambah Pengguna Baru
-          </h3>
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  <th className="px-3 py-2">Field</th>
-                  <th className="px-3 py-2 text-center">Wajib</th>
-                  <th className="px-3 py-2">Keterangan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <FieldRow name="Nama Lengkap" required desc='Nama beserta gelar. Contoh: "Dr. Ahmad, M.Kes"' />
-                <FieldRow name="Email" required desc="Email unik, contoh: nama@stikesdk.ac.id" />
-                <FieldRow name="Password Awal" required desc="Minimal 6 karakter. Informasikan ke pengguna baru." />
-                <FieldRow name="Role" required desc="Administrator, Auditor, Dosen/Staff, atau Pimpinan" />
-                <FieldRow name="Prodi" desc='Pilih prodi jika relevan, atau "Tidak ada"' />
-              </tbody>
-            </table>
-          </div>
+            <h3 className="mb-2 text-base font-semibold text-slate-800">
+              <Plus size={16} className="mr-1 inline" /> Tambah Pengguna Baru
+            </h3>
+            <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <th className="px-3 py-2">Field</th>
+                    <th className="px-3 py-2 text-center">Wajib</th>
+                    <th className="px-3 py-2">Keterangan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <FieldRow name="Nama Lengkap" required desc='Nama beserta gelar. Contoh: "Dr. Ahmad, M.Kes"' />
+                  <FieldRow name="Email" required desc="Email unik, contoh: nama@stikesdk.ac.id" />
+                  <FieldRow name="Password Awal" required desc="Minimal 6 karakter. Informasikan ke pengguna baru." />
+                  <FieldRow name="Role" required desc="Administrator, Auditor, Dosen/Staff, atau Pimpinan" />
+                  <FieldRow name="Prodi" desc='Pilih prodi jika relevan, atau "Tidak ada"' />
+                </tbody>
+              </table>
+            </div>
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-            <Trash2 size={16} className="mr-1 inline text-red-500" /> Hapus Pengguna
-          </h3>
-          <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
-            <li>Klik ikon hapus (🗑️) pada baris pengguna</li>
-            <li>Penghapusan bersifat <strong>permanen</strong></li>
-            <li>Anda <strong>tidak bisa</strong> menghapus akun Anda sendiri</li>
-          </ul>
-        </Section>
+            <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
+              <Trash2 size={16} className="mr-1 inline text-red-500" /> Hapus Pengguna
+            </h3>
+            <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
+              <li>Klik ikon hapus (🗑️) pada baris pengguna</li>
+              <li>Penghapusan bersifat <strong>permanen</strong></li>
+              <li>Anda <strong>tidak bisa</strong> menghapus akun Anda sendiri</li>
+            </ul>
+          </Section>
+        )}
 
         {/* ===== 9. PROFIL ===== */}
         <Section id="profil" icon={UserCircle} title="Profil Pengguna">
