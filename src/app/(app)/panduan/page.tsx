@@ -43,7 +43,7 @@ const ROLE_TONE = {
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
     <div className="flex items-start gap-4 px-5 py-4">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+      <div className="flex h-8 w-8 flex-none min-h-[32px] min-w-[32px] items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
         {n}
       </div>
       <div className="flex-1 pt-1 text-sm leading-relaxed text-slate-700">
@@ -100,7 +100,7 @@ function Section({
   return (
     <section id={id} className="scroll-mt-20">
       <div className="mb-4 flex items-center gap-3 border-b border-slate-200 pb-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white">
+        <div className="flex h-10 w-10 flex-none min-h-[40px] min-w-[40px] items-center justify-center rounded-xl bg-blue-600 text-white">
           <Icon size={20} />
         </div>
         <h2 className="text-xl font-bold text-slate-900">{title}</h2>
@@ -201,10 +201,10 @@ export default async function PanduanPage() {
                 href={`#${item.id}`}
                 className="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-700">
+                <span className="flex h-7 w-7 flex-none min-h-[28px] min-w-[28px] items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-700">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <Icon size={16} className="shrink-0 text-slate-400 group-hover:text-blue-600" />
+                <Icon size={16} className="flex-none text-slate-400 group-hover:text-blue-600" />
                 <span className="font-medium">{item.label}</span>
               </a>
             );
