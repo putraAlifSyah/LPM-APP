@@ -42,11 +42,13 @@ const ROLE_TONE = {
 /* ---------- Reusable step component ---------- */
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
-    <div className="flex gap-4 py-3">
+    <div className="flex items-start gap-4 px-5 py-4">
       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
         {n}
       </div>
-      <div className="flex-1 pt-0.5 text-sm text-slate-700">{children}</div>
+      <div className="flex-1 pt-1 text-sm leading-relaxed text-slate-700">
+        {children}
+      </div>
     </div>
   );
 }
@@ -98,7 +100,7 @@ function Section({
   return (
     <section id={id} className="scroll-mt-20">
       <div className="mb-4 flex items-center gap-3 border-b border-slate-200 pb-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white">
           <Icon size={20} />
         </div>
         <h2 className="text-xl font-bold text-slate-900">{title}</h2>
@@ -190,20 +192,20 @@ export default async function PanduanPage() {
             <BookOpen size={18} /> Daftar Isi
           </CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-1 sm:grid-cols-2">
+        <CardContent className="grid gap-2 sm:grid-cols-2">
           {tocItems.map((item, i) => {
             const Icon = item.icon;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
+                className="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
               >
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-500">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-700">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <Icon size={16} className="text-slate-400" />
-                {item.label}
+                <Icon size={16} className="shrink-0 text-slate-400 group-hover:text-blue-600" />
+                <span className="font-medium">{item.label}</span>
               </a>
             );
           })}
