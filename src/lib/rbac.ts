@@ -9,6 +9,7 @@ export const CAN = {
   inputTemuan: ["ADMIN", "AUDITOR"],
   kelolaUser: ["ADMIN"],
   buatBerita: ["ADMIN"],
+  kelolaAi: ["ADMIN"],
   lihatLaporan: ["ADMIN", "AUDITOR", "DOSEN", "PIMPINAN"],
 } satisfies Record<string, Role[]>;
 

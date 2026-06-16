@@ -56,7 +56,7 @@ const ROLE_BADGE: Record<Role, { tone: "purple" | "blue" | "gray" | "green"; lab
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
     <div className="flex gap-3 py-2">
-      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-300 text-xs font-bold text-slate-500">
         {n}
       </span>
       <div className="text-sm leading-relaxed text-slate-700">{children}</div>
@@ -784,7 +784,7 @@ export function PanduanContent({ role, nama }: { role: Role; nama: string }) {
                   : "text-slate-600 hover:bg-slate-50"
               }`}
             >
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-slate-100 text-xs font-bold text-slate-500">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-xs font-bold text-slate-400">
                 {i + 1}
               </span>
               <span className="flex items-center gap-1.5">
@@ -809,7 +809,7 @@ export function PanduanContent({ role, nama }: { role: Role; nama: string }) {
                 onClick={() => setOpenId(openId === s.id ? null : s.id)}
                 className="flex w-full items-center gap-3 px-5 py-4 text-left"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-300 text-sm font-bold text-slate-500">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="flex flex-1 items-center gap-2">
