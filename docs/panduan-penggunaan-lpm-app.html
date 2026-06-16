@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Penggunaan — Sistem Informasi LPM Stikes Datu Kamanre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1e293b;
+      line-height: 1.7;
+      background: #f8fafc;
+    }
+
+    /* ========== PRINT STYLES ========== */
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .page-break { page-break-before: always; }
+      .no-print { display: none !important; }
+      .cover-page { page-break-after: always; }
+      a { color: #1e293b !important; text-decoration: none !important; }
+      .toc a { color: #1e40af !important; }
+      .sidebar-info { break-inside: avoid; }
+      table { break-inside: avoid; }
+      .step-card { break-inside: avoid; }
+    }
+
+    /* ========== LAYOUT ========== */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== COVER PAGE ========== */
+    .cover-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #1e3a8a 100%);
+      color: white;
+      padding: 60px 40px;
+    }
+    .cover-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      margin-bottom: 32px;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .cover-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .cover-subtitle {
+      font-size: 20px;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+    .cover-institution {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+    .cover-meta {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 13px;
+      opacity: 0.7;
+    }
+    .cover-meta span { display: block; margin-top: 4px; }
+    .cover-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.15);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ========== TOC ========== */
+    .toc {
+      padding: 48px 0;
+    }
+    .toc h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid #3b82f6;
+    }
+    .toc-list {
+      list-style: none;
+      counter-reset: toc-counter;
+    }
+    .toc-list li {
+      counter-increment: toc-counter;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .toc-list li a {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .toc-list li a:hover { color: #1e40af; }
+    .toc-list li a::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #eff6ff;
+      color: #1e40af;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 16px;
+      flex-shrink: 0;
+    }
+    .toc-sub {
+      list-style: none;
+      padding-left: 48px;
+    }
+    .toc-sub li { border-bottom: none; }
+    .toc-sub li a {
+      padding: 6px 0;
+      font-size: 13px;
+      font-weight: 400;
+      color: #64748b;
+    }
+    .toc-sub li a::before {
+      content: "•";
+      width: 16px;
+      height: auto;
+      background: none;
+      color: #94a3b8;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      padding: 48px 0 24px;
+    }
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #1e40af;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: #64748b;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 32px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #334155;
+      margin: 20px 0 8px;
+    }
+    p { margin-bottom: 12px; }
+
+    /* ========== STEP CARDS ========== */
+    .step-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .step-card::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: #3b82f6;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 12px;
+      border-radius: 10px;
+      letter-spacing: 0.5px;
+    }
+    .step-card.tip {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+    .step-card.tip::before {
+      background: #16a34a;
+    }
+    .step-card.warning {
+      background: #fffbeb;
+      border-color: #fde68a;
+    }
+    .step-card.warning::before {
+      background: #d97706;
+    }
+    .step-card.important {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+    .step-card.important::before {
+      background: #1e40af;
+    }
+
+    /* ========== INFO BOXES ========== */
+    .info-box {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    .info-box.success {
+      background: #f0fdf4;
+      border-color: #22c55e;
+    }
+    .info-box.warning {
+      background: #fffbeb;
+      border-color: #f59e0b;
+    }
+    .info-box.danger {
+      background: #fef2f2;
+      border-color: #ef4444;
+    }
+    .info-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    /* ========== TABLES ========== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border: 1px solid #e2e8f0;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #334155;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .badge-purple { background: #f3e8ff; color: #6b21a8; }
+    .badge-gray { background: #f1f5f9; color: #475569; }
+
+    /* ========== FIELD LIST ========== */
+    .field-list {
+      list-style: none;
+      margin: 12px 0;
+    }
+    .field-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      display: flex;
+      gap: 8px;
+    }
+    .field-list li:last-child { border-bottom: none; }
+    .field-name {
+      font-weight: 600;
+      color: #1e293b;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+    .field-desc {
+      color: #64748b;
+    }
+    .required {
+      color: #ef4444;
+      font-weight: 700;
+    }
+
+    /* ========== OL STEPS ========== */
+    .steps-list {
+      list-style: none;
+      counter-reset: step-counter;
+      margin: 16px 0;
+    }
+    .steps-list li {
+      counter-increment: step-counter;
+      padding: 12px 0 12px 48px;
+      position: relative;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .steps-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #3b82f6;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ========== FLOW DIAGRAM ========== */
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+      padding: 20px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+    }
+    .flow-item {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .flow-arrow {
+      color: #94a3b8;
+      font-size: 18px;
+    }
+    .flow-blue { background: #dbeafe; color: #1e40af; }
+    .flow-yellow { background: #fef9c3; color: #854d0e; }
+    .flow-green { background: #dcfce7; color: #166534; }
+    .flow-red { background: #fee2e2; color: #991b1b; }
+    .flow-purple { background: #f3e8ff; color: #6b21a8; }
+
+    /* ========== SCREENSHOT PLACEHOLDER ========== */
+    .screenshot {
+      background: #f1f5f9;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 40px 24px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      margin: 16px 0;
+    }
+    .screenshot .label {
+      font-weight: 600;
+      color: #64748b;
+      display: block;
+      margin-top: 8px;
+    }
+
+    /* ========== DIVIDER ========== */
+    hr {
+      border: none;
+      border-top: 2px solid #e2e8f0;
+      margin: 40px 0;
+    }
+
+    /* ========== FOOTER ========== */
+    .doc-footer {
+      text-align: center;
+      padding: 40px 0;
+      color: #94a3b8;
+      font-size: 12px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* ========== PRINT BUTTON ========== */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e40af;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(30,64,175,0.3);
+      transition: all 0.2s;
+      z-index: 999;
+    }
+    .print-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30,64,175,0.4);
+    }
+
+    .check { color: #22c55e; }
+    .cross { color: #ef4444; }
+  </style>
+</head>
+<body>
+
+<!-- ==================== TOMBOL PRINT ==================== -->
+<button class="print-btn no-print" onclick="window.print()">
+  🖨️ Cetak / Save as PDF
+</button>
+
+<!-- ==================== HALAMAN SAMPUL ==================== -->
+<div class="cover-page">
+  <div class="cover-badge">Dokumen Panduan Resmi</div>
+  <div style="margin-top: 40px;">
+    <div class="cover-logo">🛡️</div>
+    <div class="cover-title">Panduan Penggunaan</div>
+    <div class="cover-subtitle">Sistem Informasi Lembaga Penjaminan Mutu</div>
+    <div class="cover-institution">Stikes Datu Kamanre</div>
+  </div>
+  <div class="cover-meta">
+    <span>Versi Dokumen: 1.0</span>
+    <span>Terakhir diperbarui: Juni 2026</span>
+    <span>Disiapkan oleh: Tim Pengembang SI-LPM</span>
+  </div>
+</div>
+
+<!-- ==================== DAFTAR ISI ==================== -->
+<div class="container page-break">
+  <div class="toc">
+    <h2>📑 Daftar Isi</h2>
+    <ol class="toc-list">
+      <li>
+        <a href="#pendahuluan">Pendahuluan</a>
+        <ul class="toc-sub">
+          <li><a href="#tentang">Tentang Aplikasi</a></li>
+          <li><a href="#role-pengguna">Role Pengguna</a></li>
+          <li><a href="#akses-fitur">Tabel Akses Fitur per Role</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#login">Login ke Sistem</a>
+        <ul class="toc-sub">
+          <li><a href="#cara-login">Cara Masuk</a></li>
+          <li><a href="#lupa-password">Lupa Password</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#navigasi">Navigasi Aplikasi</a>
+        <ul class="toc-sub">
+          <li><a href="#sidebar">Sidebar Navigasi</a></li>
+          <li><a href="#navbar">Navbar Atas</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#dashboard">Dashboard</a>
+        <ul class="toc-sub">
+          <li><a href="#statistik">Kartu Statistik</a></li>
+          <li><a href="#dokumen-terbaru">Dokumen Terbaru</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#dokumen">Manajemen Dokumen</a>
+        <ul class="toc-sub">
+          <li><a href="#lihat-dokumen">Melihat Daftar Dokumen</a></li>
+          <li><a href="#filter-dokumen">Filter &amp; Pencarian</a></li>
+          <li><a href="#upload-dokumen">Upload Dokumen Baru</a></li>
+          <li><a href="#detail-dokumen">Detail Dokumen</a></li>
+          <li><a href="#edit-dokumen">Edit Metadata Dokumen</a></li>
+          <li><a href="#versi-dokumen">Upload Versi Baru</a></li>
+          <li><a href="#hapus-dokumen">Hapus Dokumen</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#audit">Audit Mutu Internal (AMI)</a>
+        <ul class="toc-sub">
+          <li><a href="#daftar-audit">Daftar Sesi Audit</a></li>
+          <li><a href="#buat-audit">Membuat Sesi Audit Baru</a></li>
+          <li><a href="#alur-audit">Alur Status Audit</a></li>
+          <li><a href="#temuan-audit">Mencatat Temuan</a></li>
+          <li><a href="#tindak-lanjut">Tindak Lanjut &amp; Verifikasi</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#monev">Monitoring &amp; Evaluasi (Monev)</a>
+        <ul class="toc-sub">
+          <li><a href="#indikator-monev">Tabel Indikator</a></li>
+          <li><a href="#tambah-indikator">Menambah Indikator Baru</a></li>
+          <li><a href="#input-capaian">Input Capaian</a></li>
+          <li><a href="#laporan-monev">Laporan &amp; Grafik</a></li>
+          <li><a href="#export-csv">Export Data CSV</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#berita">Berita &amp; Pengumuman</a>
+        <ul class="toc-sub">
+          <li><a href="#lihat-berita">Melihat Berita</a></li>
+          <li><a href="#buat-berita">Membuat Berita / Pengumuman</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#pengguna">Manajemen Pengguna</a>
+        <ul class="toc-sub">
+          <li><a href="#daftar-pengguna">Daftar Pengguna</a></li>
+          <li><a href="#tambah-pengguna">Menambah Pengguna Baru</a></li>
+          <li><a href="#hapus-pengguna">Menghapus Pengguna</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#profil">Profil Pengguna</a>
+        <ul class="toc-sub">
+          <li><a href="#edit-profil">Edit Data Diri</a></li>
+          <li><a href="#ganti-password">Ganti Password</a></li>
+        </ul>
+      </li>
+      <li><a href="#faq">FAQ &amp; Troubleshooting</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ==================== BAB 1: PENDAHULUAN ==================== -->
+<div class="container page-break">
+  <div class="section" id="pendahuluan">
+    <div class="section-number">01</div>
+    <h2>Pendahuluan</h2>
+    <p class="section-desc">Pengenalan umum tentang Sistem Informasi LPM dan peran masing-masing pengguna.</p>
+
+    <h3 id="tentang">1.1 Tentang Aplikasi</h3>
+    <p>
+      <strong>SI-LPM (Sistem Informasi Lembaga Penjaminan Mutu)</strong> adalah aplikasi web yang dirancang khusus untuk mendukung seluruh proses penjaminan mutu internal di <strong>Stikes Datu Kamanre</strong>. Aplikasi ini menyediakan fitur-fitur utama:
+    </p>
+    <table>
+      <tr>
+        <th style="width: 200px;">Modul</th>
+        <th>Fungsi</th>
+      </tr>
+      <tr>
+        <td>📊 <strong>Dashboard</strong></td>
+        <td>Ringkasan statistik dokumen, audit, capaian Monev, dan pengumuman terbaru</td>
+      </tr>
+      <tr>
+        <td>📄 <strong>Manajemen Dokumen</strong></td>
+        <td>Upload, kelola, versioning, dan pencarian dokumen mutu (SPMI, Kurikulum, VMTS, dll.)</td>
+      </tr>
+      <tr>
+        <td>🔍 <strong>Audit Internal (AMI)</strong></td>
+        <td>Perencanaan sesi audit, pencatatan temuan, tindak lanjut, dan verifikasi</td>
+      </tr>
+      <tr>
+        <td>📈 <strong>Monitoring &amp; Evaluasi</strong></td>
+        <td>Indikator kinerja, input capaian, dan laporan visual dengan grafik</td>
+      </tr>
+      <tr>
+        <td>📰 <strong>Berita &amp; Pengumuman</strong></td>
+        <td>Publikasi informasi dari LPM ke seluruh sivitas akademika</td>
+      </tr>
+      <tr>
+        <td>👥 <strong>Manajemen Pengguna</strong></td>
+        <td>Kelola akun pengguna, role, dan hak akses (khusus Admin)</td>
+      </tr>
+      <tr>
+        <td>👤 <strong>Profil</strong></td>
+        <td>Edit data diri dan ganti kata sandi</td>
+      </tr>
+    </table>
+
+    <h3 id="role-pengguna">1.2 Role Pengguna</h3>
+    <p>Sistem mengenal <strong>4 peran (role)</strong> dengan hak akses yang berbeda:</p>
+    <table>
+      <tr>
+        <th>Role</th>
+        <th>Label di Sistem</th>
+        <th>Deskripsi</th>
+      </tr>
+      <tr>
+        <td><span class="badge badge-purple">ADMIN</span></td>
+        <td>Administrator</td>
+        <td>Akses penuh ke seluruh fitur, termasuk manajemen pengguna, buat berita, dan hapus dokumen</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-blue">AUDITOR</span></td>
+        <td>Auditor</td>
+        <td>Fokus pada kegiatan audit: membuat sesi audit, mencatat dan memverifikasi temuan</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-gray">DOSEN</span></td>
+        <td>Dosen / Staff</td>
+        <td>Upload dokumen mutu dan input data capaian Monitoring &amp; Evaluasi</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-green">PIMPINAN</span></td>
+        <td>Pimpinan</td>
+        <td>Akses untuk melihat seluruh data (dashboard, laporan, dokumen) secara read-only</td>
+      </tr>
+    </table>
+
+    <h3 id="akses-fitur">1.3 Tabel Akses Fitur per Role</h3>
+    <p>Berikut adalah matriks hak akses untuk setiap aksi dalam sistem:</p>
+    <table>
+      <tr>
+        <th>Aksi</th>
+        <th style="text-align:center">Admin</th>
+        <th style="text-align:center">Auditor</th>
+        <th style="text-align:center">Dosen</th>
+        <th style="text-align:center">Pimpinan</th>
+      </tr>
+      <tr>
+        <td>Melihat Dashboard &amp; Laporan</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+      </tr>
+      <tr>
+        <td>Upload Dokumen</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+      </tr>
+      <tr>
+        <td>Hapus Dokumen</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+      </tr>
+      <tr>
+        <td>Membuat &amp; Kelola Sesi Audit</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+      </tr>
+      <tr>
+        <td>Mencatat Temuan Audit</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+      </tr>
+      <tr>
+        <td>Input Data Monev</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+      </tr>
+      <tr>
+        <td>Membuat Berita / Pengumuman</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+      </tr>
+      <tr>
+        <td>Kelola Pengguna</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+        <td style="text-align:center" class="cross">❌</td>
+      </tr>
+      <tr>
+        <td>Edit Profil Sendiri</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+        <td style="text-align:center" class="check">✅</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== BAB 2: LOGIN ==================== -->
+<div class="container page-break">
+  <div class="section" id="login">
+    <div class="section-number">02</div>
+    <h2>Login ke Sistem</h2>
+    <p class="section-desc">Panduan langkah demi langkah untuk masuk ke aplikasi SI-LPM.</p>
+
+    <h3 id="cara-login">2.1 Cara Masuk</h3>
+    <p>Untuk mengakses sistem, buka browser dan ketikkan alamat aplikasi yang telah ditentukan.</p>
+    
+    <ol class="steps-list">
+      <li>
+        <strong>Buka halaman login</strong><br>
+        Ketikkan alamat aplikasi di browser (contoh: <code>http://localhost:3000</code> untuk development). Anda akan langsung diarahkan ke halaman login.
+      </li>
+      <li>
+        <strong>Masukkan Email</strong><br>
+        Isi kolom <em>Email</em> dengan alamat email kampus Anda yang telah didaftarkan oleh Administrator.<br>
+        Contoh format: <code>nama@stikesdk.ac.id</code>
+      </li>
+      <li>
+        <strong>Masukkan Password</strong><br>
+        Isi kolom <em>Password</em> dengan kata sandi yang diberikan oleh Administrator. Password bersifat case-sensitive (huruf besar/kecil dibedakan).
+      </li>
+      <li>
+        <strong>Klik tombol "Masuk"</strong><br>
+        Sistem akan memverifikasi kredensial Anda. Jika berhasil, Anda akan diarahkan ke halaman <strong>Dashboard</strong>.
+      </li>
+    </ol>
+
+    <div class="info-box warning">
+      <strong>⚠️ Jika gagal login:</strong>
+      Pesan error "Email atau password salah" akan muncul. Pastikan Anda memasukkan email dan password dengan benar. Jika tetap gagal, hubungi Administrator.
+    </div>
+
+    <h3 id="lupa-password">2.2 Lupa Password</h3>
+    <p>
+      Jika Anda lupa password, silakan hubungi <strong>Administrator</strong> untuk mereset password akun Anda. Administrator dapat membuat akun baru atau menghubungi tim teknis.
+    </p>
+
+    <div class="info-box">
+      <strong>ℹ️ Keamanan Session</strong>
+      Sesi login Anda berlaku selama <strong>7 hari</strong>. Setelah itu, Anda perlu login kembali. Untuk keamanan, selalu <strong>logout</strong> jika menggunakan komputer bersama.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BAB 3: NAVIGASI ==================== -->
+<div class="container page-break">
+  <div class="section" id="navigasi">
+    <div class="section-number">03</div>
+    <h2>Navigasi Aplikasi</h2>
+    <p class="section-desc">Memahami tata letak dan cara berpindah antar halaman dalam sistem.</p>
+
+    <h3 id="sidebar">3.1 Sidebar Navigasi (Menu Samping)</h3>
+    <p>Sidebar terletak di sisi kiri layar dan berisi menu navigasi utama. Menu yang ditampilkan sesuai dengan role Anda:</p>
+    
+    <table>
+      <tr>
+        <th>Ikon</th>
+        <th>Menu</th>
+        <th>Tersedia untuk</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr>
+        <td>📊</td>
+        <td><strong>Dashboard</strong></td>
+        <td>Semua role</td>
+        <td>Halaman utama dengan ringkasan data</td>
+      </tr>
+      <tr>
+        <td>📄</td>
+        <td><strong>Dokumen</strong></td>
+        <td>Semua role</td>
+        <td>Manajemen dokumen mutu</td>
+      </tr>
+      <tr>
+        <td>📈</td>
+        <td><strong>Monitoring &amp; Evaluasi</strong></td>
+        <td>Semua role</td>
+        <td>Data indikator dan capaian monev</td>
+      </tr>
+      <tr>
+        <td>✅</td>
+        <td><strong>Audit Internal</strong></td>
+        <td>Semua role</td>
+        <td>Manajemen sesi audit dan temuan</td>
+      </tr>
+      <tr>
+        <td>📰</td>
+        <td><strong>Berita &amp; Pengumuman</strong></td>
+        <td>Semua role</td>
+        <td>Informasi dari LPM</td>
+      </tr>
+      <tr>
+        <td>👥</td>
+        <td><strong>Manajemen Pengguna</strong></td>
+        <td><span class="badge badge-purple">ADMIN</span> saja</td>
+        <td>Kelola akun pengguna</td>
+      </tr>
+    </table>
+
+    <div class="info-box">
+      <strong>ℹ️ Menu Aktif</strong>
+      Menu yang sedang aktif ditandai dengan warna <strong>biru</strong> dan latar belakang terang. Anda selalu bisa melihat posisi Anda di aplikasi melalui indikator ini.
+    </div>
+
+    <h3 id="navbar">3.2 Navbar Atas</h3>
+    <p>Navbar terletak di bagian atas layar dan menampilkan:</p>
+    <ul class="field-list">
+      <li>
+        <span class="field-name">👤 Nama Pengguna</span>
+        <span class="field-desc">Menampilkan nama dan role Anda yang sedang login</span>
+      </li>
+      <li>
+        <span class="field-name">🔗 Link Profil</span>
+        <span class="field-desc">Klik nama Anda untuk membuka halaman profil</span>
+      </li>
+      <li>
+        <span class="field-name">🚪 Tombol Logout</span>
+        <span class="field-desc">Klik "Keluar" untuk mengakhiri sesi dan kembali ke halaman login</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== BAB 4: DASHBOARD ==================== -->
+<div class="container page-break">
+  <div class="section" id="dashboard">
+    <div class="section-number">04</div>
+    <h2>Dashboard</h2>
+    <p class="section-desc">Halaman utama yang menampilkan ringkasan seluruh aktivitas penjaminan mutu.</p>
+
+    <h3 id="statistik">4.1 Kartu Statistik</h3>
+    <p>Di bagian atas dashboard terdapat <strong>4 kartu statistik</strong> yang menampilkan data real-time:</p>
+    
+    <table>
+      <tr>
+        <th>Kartu</th>
+        <th>Informasi</th>
+        <th>Klik untuk</th>
+      </tr>
+      <tr>
+        <td>📄 <strong>Total Dokumen</strong></td>
+        <td>Jumlah seluruh dokumen yang tersimpan di sistem (tidak termasuk yang dihapus)</td>
+        <td>Buka halaman Dokumen</td>
+      </tr>
+      <tr>
+        <td>✅ <strong>Temuan Audit Aktif</strong></td>
+        <td>Jumlah temuan yang belum diselesaikan (status OPEN atau PROSES)</td>
+        <td>Buka halaman Audit</td>
+      </tr>
+      <tr>
+        <td>📈 <strong>Rata-rata Capaian Monev</strong></td>
+        <td>Persentase rata-rata capaian semua indikator terhadap target</td>
+        <td>Buka halaman Monev</td>
+      </tr>
+      <tr>
+        <td>📰 <strong>Pengumuman</strong></td>
+        <td>Jumlah pengumuman aktif dari LPM</td>
+        <td>Buka halaman Berita</td>
+      </tr>
+    </table>
+
+    <h3 id="dokumen-terbaru">4.2 Widget Dashboard Lainnya</h3>
+    <p>Di bawah kartu statistik, dashboard menampilkan:</p>
+    <ul class="field-list">
+      <li>
+        <span class="field-name">📊 Dokumen per Kategori</span>
+        <span class="field-desc">Progress bar visual yang menunjukkan distribusi dokumen berdasarkan kategori (SPMI, Kurikulum, VMTS, dll.)</span>
+      </li>
+      <li>
+        <span class="field-name">📄 Dokumen Terbaru</span>
+        <span class="field-desc">5 dokumen terakhir yang diupload, klik untuk melihat detail</span>
+      </li>
+      <li>
+        <span class="field-name">🔍 Audit Terakhir</span>
+        <span class="field-desc">Status sesi audit terakhir beserta periode dan unit yang diaudit</span>
+      </li>
+      <li>
+        <span class="field-name">📢 Pengumuman Terbaru</span>
+        <span class="field-desc">3 pengumuman terakhir dari LPM, klik untuk membaca selengkapnya</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== BAB 5: DOKUMEN ==================== -->
+<div class="container page-break">
+  <div class="section" id="dokumen">
+    <div class="section-number">05</div>
+    <h2>Manajemen Dokumen</h2>
+    <p class="section-desc">Panduan lengkap untuk mengelola dokumen mutu: upload, pencarian, versioning, dan penghapusan.</p>
+
+    <h3 id="lihat-dokumen">5.1 Melihat Daftar Dokumen</h3>
+    <p>Buka menu <strong>Dokumen</strong> di sidebar. Halaman ini menampilkan tabel seluruh dokumen dengan informasi:</p>
+    <table>
+      <tr>
+        <th>Kolom</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr><td><strong>Dokumen</strong></td><td>Judul dokumen, nomor versi, dan nama pengunggah</td></tr>
+      <tr><td><strong>Kategori</strong></td><td>Badge berwarna: SPMI (biru), Kurikulum (hijau), VMTS (ungu), Renstra (kuning), dll.</td></tr>
+      <tr><td><strong>Standar</strong></td><td>Kode standar BAN-PT (misal: C.1.1, C.6.2)</td></tr>
+      <tr><td><strong>Prodi</strong></td><td>Program studi terkait (jika spesifik ke prodi tertentu)</td></tr>
+      <tr><td><strong>Ukuran</strong></td><td>Ukuran file (KB/MB)</td></tr>
+      <tr><td><strong>Tanggal</strong></td><td>Tanggal upload dokumen</td></tr>
+      <tr><td><strong>Aksi</strong></td><td>Tombol Detail (👁️) dan Download (⬇️)</td></tr>
+    </table>
+
+    <h3 id="filter-dokumen">5.2 Filter &amp; Pencarian</h3>
+    <p>Di bagian atas tabel, terdapat toolbar pencarian dan filter:</p>
+    <ul class="field-list">
+      <li>
+        <span class="field-name">🔍 Kolom Pencarian</span>
+        <span class="field-desc">Ketik kata kunci untuk mencari berdasarkan judul, tag, atau standar BAN-PT</span>
+      </li>
+      <li>
+        <span class="field-name">📁 Filter Kategori</span>
+        <span class="field-desc">Pilih dari dropdown: SPMI, Kurikulum, VMTS, Renstra, Laporan, Formulir, Lainnya</span>
+      </li>
+      <li>
+        <span class="field-name">📋 Filter Standar</span>
+        <span class="field-desc">Filter berdasarkan kode standar BAN-PT yang tersedia</span>
+      </li>
+      <li>
+        <span class="field-name">🏫 Filter Prodi</span>
+        <span class="field-desc">Filter dokumen berdasarkan program studi: S1 Keperawatan, D3 Kebidanan, S1 Farmasi, D3 Keperawatan, Profesi Ners</span>
+      </li>
+    </ul>
+    <div class="info-box">
+      <strong>ℹ️ Info</strong>
+      Di bagian bawah tabel ditampilkan jumlah dokumen yang cocok dari total keseluruhan, contoh: "Menampilkan 3 dari 6 dokumen".
+    </div>
+
+    <h3 id="upload-dokumen">5.3 Upload Dokumen Baru</h3>
+    <div class="info-box warning">
+      <strong>⚠️ Hak Akses</strong>
+      Tombol Upload hanya muncul untuk role: <span class="badge badge-purple">ADMIN</span> <span class="badge badge-blue">AUDITOR</span> <span class="badge badge-gray">DOSEN</span>
+    </div>
+
+    <ol class="steps-list">
+      <li>
+        <strong>Klik tombol "Upload"</strong> di pojok kanan atas toolbar<br>
+        Modal dialog <em>"Upload Dokumen Baru"</em> akan terbuka.
+      </li>
+      <li>
+        <strong>Isi formulir upload</strong> dengan data berikut:
+      </li>
+    </ol>
+
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Wajib</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr>
+        <td><strong>Judul Dokumen</strong></td>
+        <td class="required">Ya</td>
+        <td>Nama/judul dokumen. Contoh: "Kebijakan SPMI 2024"</td>
+      </tr>
+      <tr>
+        <td><strong>Kategori</strong></td>
+        <td class="required">Ya</td>
+        <td>Pilih dari: SPMI, Kurikulum, VMTS, Renstra, Laporan, Formulir, Lainnya</td>
+      </tr>
+      <tr>
+        <td><strong>Prodi</strong></td>
+        <td>Tidak</td>
+        <td>Pilih prodi jika dokumen spesifik ke prodi tertentu, atau "Tidak spesifik"</td>
+      </tr>
+      <tr>
+        <td><strong>Standar BAN-PT</strong></td>
+        <td>Tidak</td>
+        <td>Kode standar, contoh: C.1.1, C.6.2</td>
+      </tr>
+      <tr>
+        <td><strong>Tags</strong></td>
+        <td>Tidak</td>
+        <td>Kata kunci pencarian, pisahkan dengan koma. Contoh: spmi, kebijakan, mutu</td>
+      </tr>
+      <tr>
+        <td><strong>Deskripsi</strong></td>
+        <td>Tidak</td>
+        <td>Keterangan singkat tentang isi dokumen</td>
+      </tr>
+      <tr>
+        <td><strong>File Dokumen</strong></td>
+        <td class="required">Ya</td>
+        <td>Pilih file dari komputer. Format: PDF, DOCX, XLSX, PPTX. Maksimal ~10MB</td>
+      </tr>
+    </table>
+
+    <ol class="steps-list" start="3">
+      <li>
+        <strong>Klik "Upload"</strong> untuk mengunggah dokumen. Sistem akan menyimpan file dan metadata.
+      </li>
+      <li>
+        <strong>Dokumen berhasil</strong> — Modal akan tertutup dan daftar dokumen otomatis diperbarui.
+      </li>
+    </ol>
+
+    <h3 id="detail-dokumen">5.4 Detail Dokumen</h3>
+    <p>Klik ikon mata (👁️) atau judul dokumen untuk melihat halaman detail yang menampilkan:</p>
+    <ul class="field-list">
+      <li><span class="field-name">📋 Informasi Lengkap</span><span class="field-desc">Judul, deskripsi, kategori, standar BAN-PT, tags, prodi, versi, pengunggah, dan tanggal</span></li>
+      <li><span class="field-name">⬇️ Download</span><span class="field-desc">Tombol untuk mengunduh file dokumen</span></li>
+      <li><span class="field-name">📜 Riwayat Versi</span><span class="field-desc">Daftar semua versi sebelumnya beserta catatan perubahan</span></li>
+    </ul>
+
+    <h3 id="edit-dokumen">5.5 Edit Metadata Dokumen</h3>
+    <p><em>Hanya tersedia untuk role yang memiliki izin upload.</em></p>
+    <ol class="steps-list">
+      <li>Buka halaman detail dokumen</li>
+      <li>Klik tombol <strong>"Edit"</strong></li>
+      <li>Ubah field yang diinginkan (judul, kategori, prodi, standar, tags, deskripsi)</li>
+      <li>Klik <strong>"Simpan"</strong></li>
+    </ol>
+
+    <h3 id="versi-dokumen">5.6 Upload Versi Baru</h3>
+    <p>Untuk memperbarui file dokumen tanpa kehilangan versi lama:</p>
+    <ol class="steps-list">
+      <li>Buka halaman detail dokumen</li>
+      <li>Klik tombol <strong>"Versi Baru"</strong></li>
+      <li>Pilih <strong>file baru</strong> dari komputer</li>
+      <li>Isi <strong>Catatan Perubahan</strong> (opsional, contoh: "Revisi sesuai temuan audit")</li>
+      <li>Klik <strong>"Upload Versi"</strong></li>
+    </ol>
+    <div class="info-box success">
+      <strong>✅ Versi Otomatis</strong>
+      File lama akan disimpan ke riwayat versi secara otomatis. Nomor versi akan bertambah (v1 → v2 → v3, dst.).
+    </div>
+
+    <h3 id="hapus-dokumen">5.7 Hapus Dokumen</h3>
+    <div class="info-box danger">
+      <strong>⛔ Hanya Admin</strong>
+      Hanya pengguna dengan role <span class="badge badge-purple">ADMIN</span> yang dapat menghapus dokumen.
+    </div>
+    <p>Penghapusan bersifat <strong>soft delete</strong> — dokumen tidak benar-benar dihapus dari database, melainkan ditandai sebagai "dihapus" dan tidak lagi muncul di daftar.</p>
+    <ol class="steps-list">
+      <li>Buka halaman detail dokumen</li>
+      <li>Klik tombol merah <strong>"Hapus"</strong></li>
+      <li>Konfirmasi penghapusan pada dialog yang muncul</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ==================== BAB 6: AUDIT ==================== -->
+<div class="container page-break">
+  <div class="section" id="audit">
+    <div class="section-number">06</div>
+    <h2>Audit Mutu Internal (AMI)</h2>
+    <p class="section-desc">Panduan mengelola siklus lengkap audit mutu internal: dari perencanaan hingga penutupan.</p>
+
+    <h3 id="daftar-audit">6.1 Daftar Sesi Audit</h3>
+    <p>Buka menu <strong>Audit Internal</strong> di sidebar. Halaman ini menampilkan seluruh sesi audit dalam bentuk kartu dengan informasi:</p>
+    <ul class="field-list">
+      <li><span class="field-name">📋 Nama Sesi</span><span class="field-desc">Judul sesi audit, contoh: "AMI Prodi S1 Keperawatan 2024"</span></li>
+      <li><span class="field-name">🏢 Unit Audit</span><span class="field-desc">Unit atau prodi yang diaudit</span></li>
+      <li><span class="field-name">👤 Auditor</span><span class="field-desc">Nama auditor yang ditugaskan</span></li>
+      <li><span class="field-name">📅 Periode</span><span class="field-desc">Tanggal mulai dan selesai audit</span></li>
+      <li><span class="field-name">🏷️ Status</span><span class="field-desc">Badge berwarna: RENCANA (kuning), BERLANGSUNG (biru), SELESAI (hijau)</span></li>
+    </ul>
+
+    <h3 id="buat-audit">6.2 Membuat Sesi Audit Baru</h3>
+    <div class="info-box warning">
+      <strong>⚠️ Hak Akses</strong>
+      Hanya <span class="badge badge-purple">ADMIN</span> dan <span class="badge badge-blue">AUDITOR</span> yang dapat membuat sesi audit.
+    </div>
+    <ol class="steps-list">
+      <li>
+        Klik tombol <strong>"Buat Sesi Audit"</strong> di halaman daftar audit
+      </li>
+      <li>
+        <strong>Isi formulir</strong> dengan data berikut:
+      </li>
+    </ol>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Wajib</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr>
+        <td><strong>Nama Sesi Audit</strong></td>
+        <td class="required">Ya</td>
+        <td>Nama deskriptif. Contoh: "AMI Prodi S1 Keperawatan 2024"</td>
+      </tr>
+      <tr>
+        <td><strong>Unit / Prodi yang Diaudit</strong></td>
+        <td class="required">Ya</td>
+        <td>Pilih dari: S1 Keperawatan, D3 Kebidanan, S1 Farmasi, D3 Keperawatan, Profesi Ners, Institusi, LPPM, Perpustakaan</td>
+      </tr>
+      <tr>
+        <td><strong>Tanggal Mulai</strong></td>
+        <td class="required">Ya</td>
+        <td>Tanggal rencana pelaksanaan audit dimulai</td>
+      </tr>
+      <tr>
+        <td><strong>Tanggal Selesai</strong></td>
+        <td class="required">Ya</td>
+        <td>Tanggal rencana audit selesai</td>
+      </tr>
+      <tr>
+        <td><strong>Auditor</strong></td>
+        <td class="required">Ya</td>
+        <td>Pilih auditor dari daftar pengguna dengan role AUDITOR atau ADMIN</td>
+      </tr>
+    </table>
+    <ol class="steps-list" start="3">
+      <li>Klik <strong>"Buat Sesi"</strong> — Anda akan diarahkan ke halaman detail sesi audit yang baru dibuat.</li>
+    </ol>
+
+    <h3 id="alur-audit">6.3 Alur Status Audit</h3>
+    <p>Setiap sesi audit melalui 3 tahap status:</p>
+    <div class="flow-diagram">
+      <div class="flow-item flow-yellow">📋 RENCANA</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item flow-blue">🔄 BERLANGSUNG</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item flow-green">✅ SELESAI</div>
+    </div>
+    <table>
+      <tr>
+        <th>Status</th>
+        <th>Aksi yang Tersedia</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr>
+        <td><span class="badge badge-yellow">RENCANA</span></td>
+        <td>Klik <strong>"Mulai Audit"</strong></td>
+        <td>Sesi baru dibuat, belum dimulai. Klik tombol untuk memulai proses audit.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-blue">BERLANGSUNG</span></td>
+        <td><strong>"Tambah Temuan"</strong> dan <strong>"Selesaikan Sesi"</strong></td>
+        <td>Audit sedang berjalan. Auditor dapat mencatat temuan. Tombol selesaikan aktif jika semua temuan sudah CLOSED.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-green">SELESAI</span></td>
+        <td>Hanya lihat (read-only)</td>
+        <td>Sesi audit sudah ditutup. Tidak dapat menambah atau mengubah temuan.</td>
+      </tr>
+    </table>
+
+    <h3 id="temuan-audit">6.4 Mencatat Temuan</h3>
+    <p>Pada sesi audit yang berstatus <strong>BERLANGSUNG</strong>:</p>
+    <ol class="steps-list">
+      <li>Klik tombol <strong>"Tambah Temuan"</strong></li>
+      <li>Isi formulir temuan:</li>
+    </ol>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Wajib</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr>
+        <td><strong>Deskripsi Temuan</strong></td>
+        <td class="required">Ya</td>
+        <td>Uraian detail tentang temuan audit yang ditemukan</td>
+      </tr>
+      <tr>
+        <td><strong>Kategori</strong></td>
+        <td class="required">Ya</td>
+        <td>Pilih: <span class="badge badge-gray">Observasi</span>, <span class="badge badge-yellow">Ketidaksesuaian Minor</span>, atau <span class="badge badge-red">Major</span></td>
+      </tr>
+      <tr>
+        <td><strong>Standar BAN-PT</strong></td>
+        <td>Tidak</td>
+        <td>Kode standar BAN-PT yang terkait, contoh: C.4.2</td>
+      </tr>
+      <tr>
+        <td><strong>Deadline Tindak Lanjut</strong></td>
+        <td>Tidak</td>
+        <td>Tenggat waktu untuk menyelesaikan tindak lanjut</td>
+      </tr>
+    </table>
+    <ol class="steps-list" start="3">
+      <li>Klik <strong>"Tambah"</strong> — Temuan akan muncul di daftar dengan status <span class="badge badge-red">OPEN</span></li>
+    </ol>
+
+    <h3 id="tindak-lanjut">6.5 Tindak Lanjut &amp; Verifikasi Temuan</h3>
+    <p>Setiap temuan memiliki alur penyelesaian:</p>
+    <div class="flow-diagram">
+      <div class="flow-item flow-red">🔴 OPEN</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item flow-yellow">🟡 PROSES</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item flow-green">🟢 CLOSED</div>
+    </div>
+    <ol class="steps-list">
+      <li>Pada kartu temuan, klik <strong>"Tindak Lanjut &amp; Verifikasi"</strong> (untuk Admin/Auditor) atau <strong>"Isi Tindak Lanjut"</strong> (untuk Dosen)</li>
+      <li>Isi kolom <strong>Tindak Lanjut</strong> dengan rencana atau hasil perbaikan</li>
+      <li><strong>Admin/Auditor</strong> dapat mengubah status verifikasi: OPEN → PROSES → CLOSED</li>
+      <li>Klik <strong>"Simpan"</strong></li>
+    </ol>
+    <div class="info-box success">
+      <strong>✅ Menyelesaikan Sesi Audit</strong>
+      Sesi audit hanya dapat diselesaikan jika <strong>semua temuan</strong> sudah berstatus <span class="badge badge-green">CLOSED</span>. Tombol "Selesaikan Sesi" akan aktif secara otomatis.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BAB 7: MONEV ==================== -->
+<div class="container page-break">
+  <div class="section" id="monev">
+    <div class="section-number">07</div>
+    <h2>Monitoring &amp; Evaluasi (Monev)</h2>
+    <p class="section-desc">Panduan mengelola indikator kinerja, input capaian, dan melihat laporan visualisasi.</p>
+
+    <h3 id="indikator-monev">7.1 Tabel Indikator</h3>
+    <p>Buka menu <strong>Monitoring &amp; Evaluasi</strong> di sidebar. Halaman ini menampilkan tabel indikator dengan kolom:</p>
+    <table>
+      <tr>
+        <th>Kolom</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr><td><strong>Indikator</strong></td><td>Nama indikator kinerja beserta periode (contoh: "Rata-rata IPK Lulusan", 2024-Ganjil)</td></tr>
+      <tr><td><strong>Standar</strong></td><td>Kode standar BAN-PT (contoh: C.6.1)</td></tr>
+      <tr><td><strong>Target</strong></td><td>Nilai target yang ditetapkan beserta satuan (contoh: 3.25 skala, 80%)</td></tr>
+      <tr><td><strong>Capaian</strong></td><td>Nilai capaian aktual terbaru</td></tr>
+      <tr><td><strong>%</strong></td><td>Persentase capaian terhadap target</td></tr>
+      <tr>
+        <td><strong>Status</strong></td>
+        <td>
+          <span class="badge badge-green">Tercapai</span> (≥100%) &nbsp;
+          <span class="badge badge-yellow">Mendekati</span> (75–99%) &nbsp;
+          <span class="badge badge-red">Belum Tercapai</span> (&lt;75%)
+        </td>
+      </tr>
+    </table>
+
+    <h3 id="tambah-indikator">7.2 Menambah Indikator Baru</h3>
+    <div class="info-box warning">
+      <strong>⚠️ Hak Akses</strong>
+      Hanya <span class="badge badge-purple">ADMIN</span> dan <span class="badge badge-gray">DOSEN</span> yang dapat menambah indikator dan input capaian.
+    </div>
+    <ol class="steps-list">
+      <li>Klik tombol <strong>"Indikator Baru"</strong></li>
+      <li>Isi formulir:</li>
+    </ol>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Wajib</th>
+        <th>Contoh</th>
+      </tr>
+      <tr><td><strong>Nama Indikator</strong></td><td class="required">Ya</td><td>Rata-rata IPK Lulusan</td></tr>
+      <tr><td><strong>Standar BAN-PT</strong></td><td class="required">Ya</td><td>C.6.1</td></tr>
+      <tr><td><strong>Satuan</strong></td><td class="required">Ya</td><td>%, skala, judul, orang</td></tr>
+      <tr><td><strong>Target Nilai</strong></td><td class="required">Ya</td><td>3.25, 80, 20</td></tr>
+      <tr><td><strong>Periode</strong></td><td class="required">Ya</td><td>Pilih: 2024-Ganjil, 2024-Genap, 2025-Ganjil, 2025-Genap</td></tr>
+    </table>
+    <ol class="steps-list" start="3">
+      <li>Klik <strong>"Simpan Indikator"</strong></li>
+    </ol>
+
+    <h3 id="input-capaian">7.3 Input Capaian</h3>
+    <ol class="steps-list">
+      <li>Pada baris indikator di tabel, klik tombol <strong>"Input"</strong> di kolom Aksi</li>
+      <li>Modal akan menampilkan info target. Isi formulir:</li>
+    </ol>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Wajib</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr><td><strong>Nilai Capaian</strong></td><td class="required">Ya</td><td>Masukkan angka capaian aktual</td></tr>
+      <tr><td><strong>Unit / Prodi</strong></td><td>Tidak</td><td>Prodi atau unit pelapor, contoh: "S1 Keperawatan"</td></tr>
+      <tr><td><strong>Keterangan</strong></td><td>Tidak</td><td>Catatan atau penjelasan capaian</td></tr>
+    </table>
+    <ol class="steps-list" start="3">
+      <li>Klik <strong>"Simpan Capaian"</strong> — Tabel akan otomatis menghitung persentase dan status</li>
+    </ol>
+
+    <h3 id="laporan-monev">7.4 Laporan &amp; Grafik</h3>
+    <p>Untuk melihat visualisasi data Monev:</p>
+    <ol class="steps-list">
+      <li>Di halaman Monev, klik link <strong>"Lihat Laporan"</strong> atau navigasi ke <strong>/monev/laporan</strong></li>
+      <li>Halaman laporan menampilkan:
+        <ul style="margin-top: 8px; padding-left: 20px;">
+          <li><strong>Filter Periode</strong> — Pilih periode dari dropdown</li>
+          <li><strong>Grafik Batang (Bar Chart)</strong> — Perbandingan visual Target vs Capaian per indikator</li>
+          <li><strong>Legenda Warna</strong> — Hijau (tercapai), Kuning (mendekati), Merah (belum tercapai)</li>
+          <li><strong>Tabel Rincian</strong> — Detail lengkap semua indikator beserta persentase dan status</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3 id="export-csv">7.5 Export Data CSV</h3>
+    <ol class="steps-list">
+      <li>Di halaman Laporan Monev, klik tombol <strong>"Export CSV"</strong></li>
+      <li>File CSV akan otomatis terunduh dengan nama <code>laporan-monev-[periode].csv</code></li>
+      <li>File ini bisa dibuka di <strong>Microsoft Excel</strong> atau <strong>Google Sheets</strong> untuk analisis lebih lanjut</li>
+    </ol>
+    <div class="info-box">
+      <strong>ℹ️ Data yang Ter-export</strong>
+      File CSV berisi kolom: Indikator, Standar, Target, Capaian, Persen, dan Status.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BAB 8: BERITA ==================== -->
+<div class="container page-break">
+  <div class="section" id="berita">
+    <div class="section-number">08</div>
+    <h2>Berita &amp; Pengumuman</h2>
+    <p class="section-desc">Panduan membaca dan mempublikasi informasi dari Lembaga Penjaminan Mutu.</p>
+
+    <h3 id="lihat-berita">8.1 Melihat Berita</h3>
+    <p>Buka menu <strong>Berita &amp; Pengumuman</strong> di sidebar. Halaman ini menampilkan daftar berita dan pengumuman terbaru dalam bentuk kartu.</p>
+    <p>Setiap kartu menampilkan:</p>
+    <ul class="field-list">
+      <li><span class="field-name">📰 Judul</span><span class="field-desc">Judul berita atau pengumuman</span></li>
+      <li><span class="field-name">🏷️ Kategori</span><span class="field-desc">Badge: <span class="badge badge-blue">Berita</span> atau <span class="badge badge-yellow">Pengumuman</span></span></li>
+      <li><span class="field-name">📝 Cuplikan Isi</span><span class="field-desc">Ringkasan singkat isi berita</span></li>
+      <li><span class="field-name">👤 Penulis</span><span class="field-desc">Nama pengguna yang membuat</span></li>
+      <li><span class="field-name">📅 Tanggal</span><span class="field-desc">Tanggal publikasi dalam format Indonesia</span></li>
+    </ul>
+    <p>Klik kartu berita untuk membaca isi lengkap pada halaman detail.</p>
+
+    <h3 id="buat-berita">8.2 Membuat Berita / Pengumuman Baru</h3>
+    <div class="info-box warning">
+      <strong>⚠️ Hak Akses</strong>
+      Hanya <span class="badge badge-purple">ADMIN</span> yang dapat membuat berita atau pengumuman baru.
+    </div>
+    <ol class="steps-list">
+      <li>Klik tombol <strong>"Buat Baru"</strong> di halaman berita</li>
+      <li>Isi formulir:</li>
+    </ol>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Wajib</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr><td><strong>Judul</strong></td><td class="required">Ya</td><td>Judul berita atau pengumuman</td></tr>
+      <tr><td><strong>Kategori</strong></td><td class="required">Ya</td><td>Pilih: "Berita" atau "Pengumuman"</td></tr>
+      <tr><td><strong>Isi</strong></td><td class="required">Ya</td><td>Konten lengkap berita atau pengumuman</td></tr>
+    </table>
+    <ol class="steps-list" start="3">
+      <li>Klik <strong>"Publikasi"</strong> — Berita akan langsung tampil di daftar dan widget dashboard</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ==================== BAB 9: PENGGUNA ==================== -->
+<div class="container page-break">
+  <div class="section" id="pengguna">
+    <div class="section-number">09</div>
+    <h2>Manajemen Pengguna</h2>
+    <p class="section-desc">Panduan mengelola akun pengguna sistem (khusus Administrator).</p>
+
+    <div class="info-box danger">
+      <strong>⛔ Khusus Admin</strong>
+      Seluruh fitur pada halaman ini hanya tersedia untuk pengguna dengan role <span class="badge badge-purple">ADMIN</span>. Menu ini tidak muncul di sidebar untuk role lain.
+    </div>
+
+    <h3 id="daftar-pengguna">9.1 Daftar Pengguna</h3>
+    <p>Buka menu <strong>Manajemen Pengguna</strong> di sidebar. Tabel menampilkan seluruh pengguna:</p>
+    <table>
+      <tr>
+        <th>Kolom</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr><td><strong>Nama</strong></td><td>Nama lengkap beserta gelar</td></tr>
+      <tr><td><strong>Email</strong></td><td>Alamat email login</td></tr>
+      <tr><td><strong>Role</strong></td><td>Badge role: <span class="badge badge-purple">Administrator</span>, <span class="badge badge-blue">Auditor</span>, <span class="badge badge-gray">Dosen/Staff</span>, <span class="badge badge-green">Pimpinan</span></td></tr>
+      <tr><td><strong>Prodi</strong></td><td>Program studi (jika ada)</td></tr>
+      <tr><td><strong>Bergabung</strong></td><td>Tanggal akun dibuat</td></tr>
+      <tr><td><strong>Aksi</strong></td><td>Tombol hapus (🗑️) — tidak bisa menghapus diri sendiri</td></tr>
+    </table>
+
+    <h3 id="tambah-pengguna">9.2 Menambah Pengguna Baru</h3>
+    <ol class="steps-list">
+      <li>Klik tombol <strong>"Tambah Pengguna"</strong></li>
+      <li>Isi formulir:</li>
+    </ol>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Wajib</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr><td><strong>Nama Lengkap</strong></td><td class="required">Ya</td><td>Nama beserta gelar, contoh: "Dr. Ahmad, M.Kes"</td></tr>
+      <tr><td><strong>Email</strong></td><td class="required">Ya</td><td>Email unik, contoh: nama@stikesdk.ac.id</td></tr>
+      <tr><td><strong>Password Awal</strong></td><td class="required">Ya</td><td>Minimal 6 karakter. Informasikan ke pengguna baru untuk diganti segera.</td></tr>
+      <tr><td><strong>Role</strong></td><td class="required">Ya</td><td>Pilih: Administrator, Auditor, Dosen/Staff, atau Pimpinan</td></tr>
+      <tr><td><strong>Prodi</strong></td><td>Tidak</td><td>Pilih prodi jika relevan, atau "Tidak ada"</td></tr>
+    </table>
+    <ol class="steps-list" start="3">
+      <li>Klik <strong>"Tambah"</strong> — Akun baru langsung aktif dan bisa digunakan untuk login</li>
+    </ol>
+    <div class="info-box">
+      <strong>ℹ️ Praktik Terbaik</strong>
+      Setelah membuat akun, segera informasikan email dan password awal kepada pengguna. Sarankan mereka untuk segera mengganti password melalui halaman Profil.
+    </div>
+
+    <h3 id="hapus-pengguna">9.3 Menghapus Pengguna</h3>
+    <ol class="steps-list">
+      <li>Klik ikon hapus (🗑️) pada baris pengguna yang ingin dihapus</li>
+      <li>Konfirmasi penghapusan pada dialog yang muncul</li>
+    </ol>
+    <div class="info-box danger">
+      <strong>⚠️ Peringatan</strong>
+      <ul style="margin-top: 4px; padding-left: 16px;">
+        <li>Penghapusan bersifat <strong>permanen</strong></li>
+        <li>Anda <strong>tidak bisa</strong> menghapus akun Anda sendiri</li>
+        <li>Pastikan pengguna tidak memiliki data penting sebelum dihapus</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BAB 10: PROFIL ==================== -->
+<div class="container page-break">
+  <div class="section" id="profil">
+    <div class="section-number">10</div>
+    <h2>Profil Pengguna</h2>
+    <p class="section-desc">Panduan mengelola data diri dan keamanan akun Anda.</p>
+    <p>Halaman profil dapat diakses melalui klik nama Anda di <strong>Navbar</strong> atas, atau navigasi ke menu profil.</p>
+
+    <h3 id="edit-profil">10.1 Edit Data Diri</h3>
+    <p>Kartu <strong>"Data Diri"</strong> menampilkan informasi akun Anda:</p>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Bisa Diedit?</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr>
+        <td><strong>Nama</strong></td>
+        <td class="check">✅ Ya</td>
+        <td>Nama lengkap Anda</td>
+      </tr>
+      <tr>
+        <td><strong>Email</strong></td>
+        <td class="cross">❌ Tidak</td>
+        <td>Hanya ditampilkan, tidak bisa diubah sendiri (hubungi Admin)</td>
+      </tr>
+      <tr>
+        <td><strong>Role</strong></td>
+        <td class="cross">❌ Tidak</td>
+        <td>Hanya ditampilkan, ditentukan oleh Admin</td>
+      </tr>
+      <tr>
+        <td><strong>Prodi</strong></td>
+        <td class="check">✅ Ya</td>
+        <td>Pilih dari daftar program studi</td>
+      </tr>
+    </table>
+    <ol class="steps-list">
+      <li>Ubah nama atau prodi sesuai kebutuhan</li>
+      <li>Klik <strong>"Simpan Profil"</strong></li>
+      <li>Pesan sukses hijau akan muncul: "Profil berhasil diperbarui."</li>
+    </ol>
+
+    <h3 id="ganti-password">10.2 Ganti Kata Sandi</h3>
+    <p>Kartu <strong>"Ganti Kata Sandi"</strong> memungkinkan Anda mengubah password:</p>
+    <ol class="steps-list">
+      <li>Masukkan <strong>Password Lama</strong> — password yang Anda gunakan saat ini</li>
+      <li>Masukkan <strong>Password Baru</strong> — minimal 6 karakter</li>
+      <li>Klik <strong>"Ubah Password"</strong></li>
+      <li>Pesan sukses: "Kata sandi berhasil diubah."</li>
+    </ol>
+    <div class="info-box warning">
+      <strong>⚠️ Keamanan Password</strong>
+      <ul style="margin-top: 4px; padding-left: 16px;">
+        <li>Gunakan kombinasi huruf besar, huruf kecil, angka, dan simbol</li>
+        <li>Jangan gunakan password yang sama dengan akun lain</li>
+        <li>Ganti password secara berkala (minimal setiap 3 bulan)</li>
+        <li>Jangan bagikan password Anda kepada orang lain</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BAB 11: FAQ ==================== -->
+<div class="container page-break">
+  <div class="section" id="faq">
+    <div class="section-number">11</div>
+    <h2>FAQ &amp; Troubleshooting</h2>
+    <p class="section-desc">Pertanyaan umum dan solusi untuk masalah yang sering ditemui.</p>
+
+    <div class="step-card important" data-step="Pertanyaan 1">
+      <h4>Saya tidak bisa login, muncul pesan "Email atau password salah"</h4>
+      <p>
+        <strong>Solusi:</strong><br>
+        1. Pastikan email dan password diketik dengan benar (perhatikan huruf besar/kecil)<br>
+        2. Pastikan Anda menggunakan email yang didaftarkan oleh Admin<br>
+        3. Jika masih gagal, hubungi Administrator untuk mereset password
+      </p>
+    </div>
+
+    <div class="step-card important" data-step="Pertanyaan 2">
+      <h4>Saya tidak melihat tombol Upload di halaman Dokumen</h4>
+      <p>
+        <strong>Solusi:</strong><br>
+        Tombol Upload hanya tersedia untuk role Admin, Auditor, dan Dosen. Jika Anda login sebagai <strong>Pimpinan</strong>, Anda hanya memiliki akses baca. Hubungi Admin jika role Anda perlu diubah.
+      </p>
+    </div>
+
+    <div class="step-card important" data-step="Pertanyaan 3">
+      <h4>Menu "Manajemen Pengguna" tidak muncul di sidebar</h4>
+      <p>
+        <strong>Solusi:</strong><br>
+        Menu ini hanya tampil untuk pengguna dengan role <strong>Admin</strong>. Ini adalah batasan hak akses yang disengaja untuk keamanan sistem.
+      </p>
+    </div>
+
+    <div class="step-card important" data-step="Pertanyaan 4">
+      <h4>Tombol "Selesaikan Sesi" tidak bisa diklik (disabled)</h4>
+      <p>
+        <strong>Solusi:</strong><br>
+        Sesi audit hanya dapat diselesaikan jika <strong>seluruh temuan</strong> sudah berstatus <span class="badge badge-green">CLOSED</span>. Pastikan semua temuan telah diverifikasi dan ditutup terlebih dahulu.
+      </p>
+    </div>
+
+    <div class="step-card important" data-step="Pertanyaan 5">
+      <h4>Bagaimana cara melihat laporan Monev dalam bentuk grafik?</h4>
+      <p>
+        <strong>Solusi:</strong><br>
+        Buka halaman <strong>Monitoring &amp; Evaluasi</strong>, lalu klik link <strong>"Lihat Laporan"</strong>. Halaman laporan menampilkan grafik batang dan tabel rincian. Anda juga bisa export data ke CSV.
+      </p>
+    </div>
+
+    <div class="step-card important" data-step="Pertanyaan 6">
+      <h4>Saya ingin mengubah email akun saya</h4>
+      <p>
+        <strong>Solusi:</strong><br>
+        Email tidak bisa diubah secara mandiri. Hubungi <strong>Administrator</strong> untuk membuat akun baru dengan email yang diinginkan.
+      </p>
+    </div>
+
+    <div class="step-card important" data-step="Pertanyaan 7">
+      <h4>Format file apa saja yang bisa diupload?</h4>
+      <p>
+        <strong>Jawaban:</strong><br>
+        Sistem mendukung file dengan format: <strong>PDF</strong>, <strong>DOC/DOCX</strong> (Word), <strong>XLS/XLSX</strong> (Excel), dan <strong>PPT/PPTX</strong> (PowerPoint). Ukuran maksimal sekitar 10MB per file.
+      </p>
+    </div>
+
+    <div class="step-card important" data-step="Pertanyaan 8">
+      <h4>Apa yang terjadi jika dokumen dihapus?</h4>
+      <p>
+        <strong>Jawaban:</strong><br>
+        Penghapusan dokumen bersifat <strong>soft delete</strong>. Dokumen tidak benar-benar hilang dari database, namun ditandai sebagai "dihapus" dan tidak muncul di daftar. Hanya Admin yang dapat melakukan penghapusan.
+      </p>
+    </div>
+
+    <hr>
+
+    <h3>Kontak Bantuan</h3>
+    <table>
+      <tr>
+        <th>Jenis Bantuan</th>
+        <th>Hubungi</th>
+      </tr>
+      <tr>
+        <td>Reset password / kelola akun</td>
+        <td>Administrator Sistem (admin@stikesdk.ac.id)</td>
+      </tr>
+      <tr>
+        <td>Masalah teknis / bug</td>
+        <td>Tim Pengembang SI-LPM</td>
+      </tr>
+      <tr>
+        <td>Pertanyaan terkait mutu</td>
+        <td>Lembaga Penjaminan Mutu (LPM)</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="container">
+  <div class="doc-footer">
+    <p><strong>Panduan Penggunaan SI-LPM</strong> — Versi 1.0</p>
+    <p>© 2026 Lembaga Penjaminan Mutu — Stikes Datu Kamanre</p>
+    <p style="margin-top: 8px;">Dokumen ini bersifat <strong>internal</strong> dan diperuntukkan bagi sivitas akademika Stikes Datu Kamanre.</p>
+  </div>
+</div>
+
+</body>
+</html>
