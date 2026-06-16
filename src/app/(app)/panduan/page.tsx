@@ -349,8 +349,8 @@ export default async function PanduanPage() {
 
           {["ADMIN", "AUDITOR", "DOSEN"].includes(role) && (
             <>
-              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-                <Upload size={16} className="mr-1 inline" /> Upload Dokumen Baru
+              <h3 className="mb-2 mt-6 flex items-center gap-2 text-base font-semibold text-slate-800">
+                <Upload size={16} className="flex-none text-blue-600" /> Upload Dokumen Baru
               </h3>
               <InfoBox variant="warning" title="Hak Akses">
                 Tombol Upload hanya muncul untuk: <strong>Admin</strong>, <strong>Auditor</strong>, <strong>Dosen</strong>. Pimpinan hanya bisa melihat.
@@ -376,13 +376,13 @@ export default async function PanduanPage() {
                 </table>
               </div>
 
-              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-                <Pencil size={16} className="mr-1 inline" /> Edit &amp; Versi Baru
+              <h3 className="mb-2 mt-6 flex items-center gap-2 text-base font-semibold text-slate-800">
+                <Pencil size={16} className="flex-none text-blue-600" /> Edit &amp; Versi Baru
               </h3>
               <p className="text-sm text-slate-600">
                 Di halaman detail dokumen, tersedia tombol:
               </p>
-              <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
+              <ul className="list-disc space-y-1.5 pl-5 text-sm text-slate-600 marker:text-slate-400">
                 <li><strong>Edit</strong> — Ubah metadata (judul, kategori, standar, tags, deskripsi)</li>
                 <li><strong>Versi Baru</strong> — Upload file baru, file lama otomatis disimpan ke riwayat versi</li>
                 {role === "ADMIN" && (
@@ -406,8 +406,8 @@ export default async function PanduanPage() {
 
           {["ADMIN", "AUDITOR"].includes(role) && (
             <>
-              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-                <Plus size={16} className="mr-1 inline" /> Buat Sesi Audit Baru
+              <h3 className="mb-2 mt-6 flex items-center gap-2 text-base font-semibold text-slate-800">
+                <Plus size={16} className="flex-none text-blue-600" /> Buat Sesi Audit Baru
               </h3>
               <InfoBox variant="warning" title="Hak Akses">
                 Hanya <strong>Admin</strong> dan <strong>Auditor</strong> yang dapat membuat sesi audit.
@@ -435,7 +435,7 @@ export default async function PanduanPage() {
               <p className="text-sm text-slate-600">
                 Saat sesi berstatus <strong>BERLANGSUNG</strong>, klik <strong>&quot;Tambah Temuan&quot;</strong> untuk mencatat:
               </p>
-              <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
+              <ul className="list-disc space-y-1.5 pl-5 text-sm text-slate-600 marker:text-slate-400">
                 <li><strong>Deskripsi Temuan</strong> — Uraian detail temuan</li>
                 <li><strong>Kategori</strong> — Observasi, Ketidaksesuaian Minor, atau Major</li>
                 <li><strong>Standar BAN-PT</strong> — Kode standar terkait (opsional)</li>
@@ -452,7 +452,7 @@ export default async function PanduanPage() {
             <span className="text-slate-300">→</span>
             <Badge tone="green">🟢 CLOSED</Badge>
           </div>
-          <ul className="ml-4 mt-3 list-disc space-y-1 text-sm text-slate-600">
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-slate-600 marker:text-slate-400">
             <li>Klik <strong>&quot;Tindak Lanjut &amp; Verifikasi&quot;</strong> pada kartu temuan</li>
             <li>Isi rencana/hasil tindak lanjut</li>
             {["ADMIN", "AUDITOR"].includes(role) && (
@@ -480,8 +480,8 @@ export default async function PanduanPage() {
 
           {["ADMIN", "DOSEN"].includes(role) && (
             <>
-              <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-                <Plus size={16} className="mr-1 inline" /> Tambah Indikator &amp; Input Capaian
+              <h3 className="mb-2 mt-6 flex items-center gap-2 text-base font-semibold text-slate-800">
+                <Plus size={16} className="flex-none text-blue-600" /> Tambah Indikator &amp; Input Capaian
               </h3>
               <InfoBox variant="warning" title="Hak Akses">
                 Hanya <strong>Admin</strong> dan <strong>Dosen</strong> yang dapat menambah indikator dan input capaian.
@@ -495,13 +495,13 @@ export default async function PanduanPage() {
             </>
           )}
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-            <BarChart3 size={16} className="mr-1 inline" /> Laporan &amp; Grafik
+          <h3 className="mb-2 mt-6 flex items-center gap-2 text-base font-semibold text-slate-800">
+            <BarChart3 size={16} className="flex-none text-blue-600" /> Laporan &amp; Grafik
           </h3>
           <p className="text-sm text-slate-600">
             Buka <Link href="/monev/laporan" className="font-medium text-blue-600 underline">halaman Laporan Monev</Link> untuk melihat:
           </p>
-          <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
+          <ul className="list-disc space-y-1.5 pl-5 text-sm text-slate-600 marker:text-slate-400">
             <li><strong>Grafik Batang</strong> — Perbandingan visual Target vs Capaian per indikator</li>
             <li><strong>Tabel Rincian</strong> — Detail lengkap semua indikator</li>
             <li><strong>Filter Periode</strong> — Pilih periode dari dropdown</li>
@@ -533,8 +533,8 @@ export default async function PanduanPage() {
               Seluruh fitur pada halaman ini hanya tersedia untuk role <strong>Admin</strong>. Menu ini tidak muncul di sidebar untuk role lain.
             </InfoBox>
 
-            <h3 className="mb-2 text-base font-semibold text-slate-800">
-              <Plus size={16} className="mr-1 inline" /> Tambah Pengguna Baru
+            <h3 className="mb-2 flex items-center gap-2 text-base font-semibold text-slate-800">
+              <Plus size={16} className="flex-none text-blue-600" /> Tambah Pengguna Baru
             </h3>
             <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
               <table className="w-full text-sm">
@@ -555,10 +555,10 @@ export default async function PanduanPage() {
               </table>
             </div>
 
-            <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-              <Trash2 size={16} className="mr-1 inline text-red-500" /> Hapus Pengguna
+            <h3 className="mb-2 mt-6 flex items-center gap-2 text-base font-semibold text-slate-800">
+              <Trash2 size={16} className="flex-none text-red-500" /> Hapus Pengguna
             </h3>
-            <ul className="ml-4 list-disc space-y-1 text-sm text-slate-600">
+            <ul className="list-disc space-y-1.5 pl-5 text-sm text-slate-600 marker:text-slate-400">
               <li>Klik ikon hapus (🗑️) pada baris pengguna</li>
               <li>Penghapusan bersifat <strong>permanen</strong></li>
               <li>Anda <strong>tidak bisa</strong> menghapus akun Anda sendiri</li>
@@ -591,8 +591,8 @@ export default async function PanduanPage() {
             </table>
           </div>
 
-          <h3 className="mb-2 mt-6 text-base font-semibold text-slate-800">
-            <Lock size={16} className="mr-1 inline" /> Ganti Password
+          <h3 className="mb-2 mt-6 flex items-center gap-2 text-base font-semibold text-slate-800">
+            <Lock size={16} className="flex-none text-blue-600" /> Ganti Password
           </h3>
           <Card>
             <CardContent className="divide-y divide-slate-100 p-0">
