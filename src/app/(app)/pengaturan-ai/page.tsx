@@ -2,22 +2,21 @@ import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { can } from "@/lib/rbac";
 import { PageHeader } from "@/components/layout/page-header";
-import { AiSettingsForm } from "@/components/modules/ai-settings-form";
+import { PengaturanAiForm } from "@/components/modules/pengaturan-ai-form";
 
 export const dynamic = "force-dynamic";
 
 export default async function PengaturanAiPage() {
   const user = await getSession();
-  if (!user) redirect("/login");
-  if (!can(user.role, "kelolaAi")) redirect("/dashboard");
+  if (!can(user?.role, "kelolaAI")) redirect("/dashboard");
 
   return (
-    <div>
+    <div className="mx-auto max-w-2xl">
       <PageHeader
-        title="Pengaturan AI"
-        description="Konfigurasi provider, model, dan API key untuk chatbot AI."
+        title="Pengaturan AI Assistant"
+        description="Konfigurasi penyedia, model, dan API key untuk chatbot AI aplikasi."
       />
-      <AiSettingsForm />
+      <PengaturanAiForm />
     </div>
   );
 }

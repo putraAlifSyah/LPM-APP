@@ -8,8 +8,8 @@ export const CAN = {
   buatAudit: ["ADMIN", "AUDITOR"],
   inputTemuan: ["ADMIN", "AUDITOR"],
   kelolaUser: ["ADMIN"],
+  kelolaAI: ["ADMIN"],
   buatBerita: ["ADMIN"],
-  kelolaAi: ["ADMIN"],
   lihatLaporan: ["ADMIN", "AUDITOR", "DOSEN", "PIMPINAN"],
 } satisfies Record<string, Role[]>;
 

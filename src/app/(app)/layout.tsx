@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Navbar } from "@/components/layout/navbar";
-import { AiChatWidget } from "@/components/modules/ai-chat-widget";
+import { ChatWidget } from "@/components/ai/chat-widget";
 
 export default async function AppLayout({
   children,
@@ -19,7 +19,7 @@ export default async function AppLayout({
         <Navbar user={user} />
         <main className="flex-1 overflow-y-auto p-6">{children}</main>
       </div>
-      <AiChatWidget />
+      <ChatWidget namaUser={user.nama} />
     </div>
   );
 }

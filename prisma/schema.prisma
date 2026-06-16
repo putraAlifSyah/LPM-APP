@@ -134,10 +134,14 @@ enum StatusTemuan {
   CLOSED
 }
 
+/// Konfigurasi AI Assistant (singleton, hanya 1 baris dengan id "default")
 model AiConfig {
-  id        String   @id @default("default")
-  provider  String   @default("openai")
-  model     String   @default("gpt-4o-mini")
-  apiKey    String   @default("")
-  updatedAt DateTime @updatedAt
+  id                String   @id @default("default")
+  provider          String   @default("openai") // openai | anthropic | gemini | custom
+  model             String   @default("gpt-4o-mini")
+  apiKey            String   @default("") // terenkripsi (AES-256-GCM)
+  baseUrl           String? // untuk provider custom / OpenAI-compatible
+  enabled           Boolean  @default(false)
+  systemPromptExtra String? // instruksi tambahan opsional dari admin
+  updatedAt         DateTime @updatedAt
 }

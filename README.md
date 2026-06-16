@@ -94,12 +94,23 @@ Lembaga Penjaminan Mutu (LPM) memiliki peran krusial dalam menjaga dan meningkat
 - Hashing password dengan bcrypt
 - Profil pengguna dengan kemampuan edit mandiri
 
+### 🤖 Asisten AI (Chatbot)
+- **Chatbot mengambang** di pojok kanan bawah untuk semua pengguna yang login
+- **Multi-provider**: OpenAI, Anthropic (Claude), Google Gemini, dan endpoint OpenAI-compatible (OpenRouter, Groq, LM Studio, dll.)
+- **Model bebas diketik** — pilih dari saran atau tulis nama model sendiri
+- **Sadar konteks aplikasi** — AI memahami panduan fitur **dan** membaca data live (jumlah & daftar dokumen, sesi audit, capaian Monev) sesuai hak akses pengguna
+- **Konfigurasi khusus Admin** di halaman `Pengaturan AI` — pilih provider, model, dan API key
+- **API key dienkripsi** (AES-256-GCM) saat disimpan, tidak pernah ditampilkan kembali ke browser
+- **Tes koneksi** ke provider sebelum mengaktifkan
+- Balasan AI dirender sebagai Markdown (tebal, bullet, kode) langsung di dalam chat
+
 ### 🔐 Autentikasi & Keamanan
 - JWT-based authentication (jose library)
 - HTTP-only secure cookies (7 hari masa aktif)
 - Middleware proteksi route otomatis
 - Role-based permission pada setiap aksi
 - Password hashing dengan bcrypt (salt rounds: 10)
+- Enkripsi API key AI dengan AES-256-GCM (Node crypto)
 
 ---
 
@@ -116,6 +127,8 @@ Lembaga Penjaminan Mutu (LPM) memiliki peran krusial dalam menjaga dan meningkat
 | **Auth** | [jose](https://github.com/panva/jose) (JWT) + [bcryptjs](https://github.com/dcodeIO/bcrypt.js) | 6.x / 3.x |
 | **Icons** | [Lucide React](https://lucide.dev/) | 1.18.0 |
 | **Charts** | [Recharts](https://recharts.org/) | 3.8.1 |
+| **AI Chatbot** | Multi-provider (OpenAI / Anthropic / Gemini / OpenAI-compatible) via REST | - |
+| **Enkripsi** | Node.js `crypto` (AES-256-GCM) untuk API key AI | - |
 | **Utilities** | [clsx](https://github.com/lukeed/clsx) + [tailwind-merge](https://github.com/dcastil/tailwind-merge) | - |
 
 ---
@@ -265,6 +278,25 @@ Setelah menjalankan seed, tersedia 4 akun demo:
 
 ---
 
+## 🤖 Mengaktifkan Asisten AI
+
+Chatbot AI **nonaktif secara default**. Untuk mengaktifkannya:
+
+1. Login sebagai **Admin**
+2. Buka menu **Pengaturan AI** di sidebar
+3. Pilih **Provider** (OpenAI / Anthropic / Gemini / Custom OpenAI-compatible)
+4. Isi **Model** (pilih saran atau ketik sendiri, mis. `gpt-4o-mini`, `gemini-2.5-flash`, `claude-3-5-haiku`)
+5. Untuk provider **Custom**, isi juga **Base URL** (mis. `https://openrouter.ai/api/v1`)
+6. Tempel **API key** dari provider yang dipilih
+7. Klik **Tes Koneksi** untuk memastikan konfigurasi benar
+8. Aktifkan **toggle** dan klik **Simpan**
+
+Setelah aktif, chatbot muncul di pojok kanan bawah untuk **semua pengguna** yang login. AI dapat menjawab pertanyaan seputar cara penggunaan fitur maupun data yang ada di aplikasi (dokumen, audit, Monev) sesuai hak akses masing-masing pengguna.
+
+> 🔒 **Keamanan:** API key disimpan terenkripsi (AES-256-GCM) di database dan tidak pernah dikirim kembali ke browser dalam bentuk asli.
+
+---
+
 ## 🗄️ Struktur Database
 
 ### Entity Relationship Diagram
@@ -396,6 +428,8 @@ Sistem menggunakan **Role-Based Access Control** dengan 4 role:
 | Kelola User | ✅ | ❌ | ❌ | ❌ |
 | Buat Berita | ✅ | ❌ | ❌ | ❌ |
 | Lihat Laporan | ✅ | ✅ | ✅ | ✅ |
+| Konfigurasi AI | ✅ | ❌ | ❌ | ❌ |
+| Gunakan Chatbot AI | ✅ | ✅ | ✅ | ✅ |
 
 ### Penjelasan Role
 
@@ -541,6 +575,31 @@ Ambil profil pengguna yang login.
 
 #### `PATCH /api/profil`
 Update profil (nama, email, password).
+
+---
+
+### Asisten AI
+
+#### `GET /api/ai/config`
+Ambil konfigurasi AI. Pengguna biasa hanya menerima status `enabled`; Admin menerima detail konfigurasi (API key dalam bentuk masked).
+
+#### `PUT /api/ai/config`
+Simpan konfigurasi AI — provider, model, base URL, API key (terenkripsi), dan toggle aktif. **Khusus Admin.**
+
+#### `POST /api/ai/test`
+Uji koneksi ke provider AI dengan konfigurasi yang dikirim atau yang tersimpan. **Khusus Admin.**
+
+#### `POST /api/ai/chat`
+Kirim pesan ke Asisten AI. Server menyusun system prompt (panduan + data live + hak akses pengguna) lalu meneruskan ke provider. Tersedia untuk semua pengguna login (jika AI aktif).
+
+**Request Body:**
+```json
+{
+  "messages": [
+    { "role": "user", "content": "Bagaimana cara upload dokumen?" }
+  ]
+}
+```
 
 ---
 
