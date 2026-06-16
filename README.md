@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/badge/Prisma-6-2D3748?style=for-the-badge&logo=prisma" alt="Prisma 6" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript 5" />
   <img src="https://img.shields.io/badge/TailwindCSS-4-06B6D4?style=for-the-badge&logo=tailwindcss" alt="Tailwind CSS 4" />
+  <img src="https://img.shields.io/badge/AI_Assistant-Multi_Provider-8A2BE2?style=for-the-badge&logo=openai" alt="AI Chatbot" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License MIT" />
 </p>
 
@@ -11,7 +12,7 @@
 
 **Sistem Informasi Lembaga Penjaminan Mutu — Stikes Datu Kamanre**
 
-Aplikasi web full-stack untuk mengelola seluruh proses penjaminan mutu internal (SPMI) institusi pendidikan tinggi kesehatan. Dibangun dengan arsitektur modern menggunakan Next.js 16 App Router, Prisma ORM, dan SQLite.
+Aplikasi web full-stack untuk mengelola seluruh proses penjaminan mutu internal (SPMI) institusi pendidikan tinggi kesehatan. Dibangun dengan arsitektur modern menggunakan Next.js 16 App Router, Prisma ORM, SQLite, serta dilengkapi dengan **Asisten AI Chatbot cerdas multi-provider** untuk membantu penggunaan aplikasi.
 
 ---
 
