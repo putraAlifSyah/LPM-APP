@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License MIT" />
 </p>
 
-# 🛡️ LPM-APP
+# LPM-APP
 
 **Quality Assurance Management System — Stikes Datu Kamanre**
 
@@ -16,28 +16,28 @@ A full-stack web application designed to manage the entire Internal Quality Assu
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [About the Project](#-about-the-project)
-- [Key Features](#-key-features)
-- [Tech Stack](#-tech-stack)
-- [Project Architecture](#-project-architecture)
-- [Prerequisites](#-prerequisites)
-- [Installation & Setup](#-installation--setup)
-- [Running the Application](#-running-the-application)
-- [Demo Accounts](#-demo-accounts)
-- [Database Structure](#-database-structure)
-- [Role-Based Access Control (RBAC)](#-role-based-access-control-rbac)
-- [API Reference](#-api-reference)
-- [Folder Structure](#-folder-structure)
-- [UI Components](#-ui-components)
-- [Deployment](#-deployment)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [About the Project](#about-the-project)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Project Architecture](#project-architecture)
+- [Prerequisites](#prerequisites)
+- [Installation & Setup](#installation--setup)
+- [Running the Application](#running-the-application)
+- [Demo Accounts](#demo-accounts)
+- [Database Structure](#database-structure)
+- [Role-Based Access Control (RBAC)](#role-based-access-control-rbac)
+- [API Reference](#api-reference)
+- [Folder Structure](#folder-structure)
+- [UI Components](#ui-components)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 📖 About the Project
+## About the Project
 
 **LPM-APP** is a Quality Assurance Management Information System specifically designed for **Stikes Datu Kamanre**. This application supports the PPEPP cycle (Establishment, Implementation, Evaluation, Control, Improvement) in accordance with **BAN-PT** and **SPMI** standards.
 
@@ -52,15 +52,15 @@ The Quality Assurance Agency (LPM) plays a crucial role in maintaining and impro
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 📊 Dashboard
+### Dashboard
 - Statistical summary of documents, audits, and Monev (Monitoring & Evaluation) achievements.
 - Document distribution by category with visual progress bars.
 - List of recent documents and active announcements.
 - Latest audit status along with its timeline.
 
-### 📄 Document Management
+### Document Management
 - Upload, download, and manage quality documents (PDF, DOCX, etc.).
 - Document categorization: SPMI, Curriculum, VMTS, Strategic Plan, Reports, Forms.
 - Document mapping to BAN-PT standards (e.g., C.1.1, C.6.2, etc.).
@@ -69,7 +69,7 @@ The Quality Assurance Agency (LPM) plays a crucial role in maintaining and impro
 - Soft delete for data security.
 - Filtering by category, study program, and standard.
 
-### 🔍 Internal Quality Audit (AMI)
+### Internal Quality Audit (AMI)
 - Planning and scheduling of audit sessions.
 - Recording of audit findings (Observation, Minor Non-conformity, Major Non-conformity).
 - Tracking of finding status: Open → In Progress → Closed.
@@ -77,25 +77,25 @@ The Quality Assurance Agency (LPM) plays a crucial role in maintaining and impro
 - Setting deadlines and follow-up actions.
 - Audit history per unit/study program.
 
-### 📈 Monitoring & Evaluation (Monev)
+### Monitoring & Evaluation (Monev)
 - Input of performance indicators with measurable targets.
 - Recording of achievements per semester period.
 - Automatic calculation of achievement vs. target percentage.
 - Monev reports with chart visualizations (Recharts).
 - Filtering by period and unit.
 
-### 📰 News & Announcements
+### News & Announcements
 - Publication of LPM news and announcements.
 - Categorization: News / Announcements.
 - Timeline display with Indonesian date formats.
 
-### 👥 User Management
+### User Management
 - CRUD operations for users with Role-Based Access Control.
 - 4 roles: Admin, Auditor, Lecturer, Leadership.
 - Password hashing using bcrypt.
 - User profiles with self-edit capabilities.
 
-### 🤖 AI Assistant (Chatbot)
+### AI Assistant (Chatbot)
 - **Floating chatbot** in the bottom right corner for all logged-in users.
 - **Multi-provider support**: OpenAI, Anthropic (Claude), Google Gemini, and OpenAI-compatible endpoints (OpenRouter, Groq, LM Studio, etc.).
 - **Freely typable models** — choose from suggestions or type your own model name.
@@ -105,7 +105,7 @@ The Quality Assurance Agency (LPM) plays a crucial role in maintaining and impro
 - **Connection testing** to the provider before activation.
 - AI responses are rendered as Markdown (bold, bullet points, code) directly within the chat.
 
-### 🔐 Authentication & Security
+### Authentication & Security
 - JWT-based authentication (jose library).
 - HTTP-only secure cookies (7-day validity).
 - Automatic route protection middleware.
@@ -115,7 +115,7 @@ The Quality Assurance Agency (LPM) plays a crucial role in maintaining and impro
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Technology | Version |
 |----------|-----------|-------|
@@ -134,7 +134,7 @@ The Quality Assurance Agency (LPM) plays a crucial role in maintaining and impro
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -173,7 +173,7 @@ The Quality Assurance Agency (LPM) plays a crucial role in maintaining and impro
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Ensure your system has the following installed:
 
@@ -183,11 +183,11 @@ Ensure your system has the following installed:
 | **npm** | 9+ | `npm -v` |
 | **Git** | 2.x | `git -v` |
 
-> **💡 Tip:** It is highly recommended to use Node.js **v20 LTS** or newer for optimal performance.
+> Tip: It is highly recommended to use Node.js **v20 LTS** or newer for optimal performance.
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -214,7 +214,7 @@ DATABASE_URL="file:./dev.db"
 AUTH_SECRET="change-this-to-a-secure-and-long-secret-key"
 ```
 
-> ⚠️ **Important:** Ensure `AUTH_SECRET` is changed to a secure and unique string in production environments. Use a minimum of 32 random characters.
+> **Important:** Ensure `AUTH_SECRET` is changed to a secure and unique string in production environments. Use a minimum of 32 random characters.
 
 ### 4. Database Setup
 
@@ -234,7 +234,7 @@ npx prisma generate
 
 ---
 
-## ▶️ Running the Application
+## Running the Application
 
 ### Development Mode
 
@@ -264,7 +264,7 @@ Prisma Studio will run on: **http://localhost:5555**
 
 ---
 
-## 🔑 Demo Accounts
+## Demo Accounts
 
 After running the seed script, 4 demo accounts will be available:
 
@@ -275,11 +275,11 @@ After running the seed script, 4 demo accounts will be available:
 | **Dosen** | `dosen@stikesdk.ac.id` | `password123` |
 | **Pimpinan** | `pimpinan@stikesdk.ac.id` | `password123` |
 
-> ℹ️ The login page provides quick-fill buttons to simplify testing.
+> The login page provides quick-fill buttons to simplify testing.
 
 ---
 
-## 🤖 Activating the AI Assistant
+## Activating the AI Assistant
 
 The AI Chatbot is **disabled by default**. To activate it:
 
@@ -294,11 +294,11 @@ The AI Chatbot is **disabled by default**. To activate it:
 
 Once active, the chatbot will appear in the bottom right corner for **all logged-in users**. The AI can answer questions about how to use features or inquire about application data (documents, audits, Monev) according to the respective user's access rights.
 
-> 🔒 **Security:** API keys are stored encrypted (AES-256-GCM) in the database and are never sent back to the browser in their original form.
+> **Security:** API keys are stored encrypted (AES-256-GCM) in the database and are never sent back to the browser in their original form.
 
 ---
 
-## 🗄️ Database Structure
+## Database Structure
 
 ### Entity Relationship Diagram
 
@@ -415,22 +415,22 @@ Once active, the chatbot will appear in the bottom right corner for **all logged
 
 ---
 
-## 🔐 Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 The system utilizes **Role-Based Access Control** with 4 roles:
 
 | Action | Admin | Auditor | Lecturer | Leadership |
 |------|:-----:|:-------:|:-----:|:--------:|
-| Upload Document | ✅ | ✅ | ✅ | ❌ |
-| Delete Document | ✅ | ❌ | ❌ | ❌ |
-| Input Monev | ✅ | ❌ | ✅ | ❌ |
-| Create Audit | ✅ | ✅ | ❌ | ❌ |
-| Input Finding | ✅ | ✅ | ❌ | ❌ |
-| Manage Users | ✅ | ❌ | ❌ | ❌ |
-| Create News | ✅ | ❌ | ❌ | ❌ |
-| View Reports | ✅ | ✅ | ✅ | ✅ |
-| Configure AI | ✅ | ❌ | ❌ | ❌ |
-| Use AI Chatbot | ✅ | ✅ | ✅ | ✅ |
+| Upload Document | Yes | Yes | Yes | No |
+| Delete Document | Yes | No | No | No |
+| Input Monev | Yes | No | Yes | No |
+| Create Audit | Yes | Yes | No | No |
+| Input Finding | Yes | Yes | No | No |
+| Manage Users | Yes | No | No | No |
+| Create News | Yes | No | No | No |
+| View Reports | Yes | Yes | Yes | Yes |
+| Configure AI | Yes | No | No | No |
+| Use AI Chatbot | Yes | Yes | Yes | Yes |
 
 ### Role Explanations
 
@@ -441,7 +441,7 @@ The system utilizes **Role-Based Access Control** with 4 roles:
 
 ---
 
-## 📡 API Reference
+## API Reference
 
 ### Authentication
 
@@ -604,7 +604,7 @@ Sends a message to the AI Assistant. The server constructs the system prompt (gu
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 lpm/
@@ -706,7 +706,7 @@ lpm/
 
 ---
 
-## 🧩 UI Components
+## UI Components
 
 The application uses consistent custom UI components:
 
@@ -735,7 +735,7 @@ Responsive table component.
 
 ---
 
-## 🚢 Deployment
+## Deployment
 
 ### Option 1: Vercel (Recommended)
 
@@ -748,7 +748,7 @@ Responsive table component.
    ```
 4. Deploy automatically!
 
-> ⚠️ For production, consider migrating from SQLite to **PostgreSQL** or **MySQL** to support concurrent access.
+> For production, consider migrating from SQLite to **PostgreSQL** or **MySQL** to support concurrent access.
 
 ### Option 2: Self-Hosted (VPS)
 
@@ -788,7 +788,7 @@ CMD ["npm", "start"]
 
 ---
 
-## 📝 Available Scripts
+## Available Scripts
 
 | Script | Command | Description |
 |--------|----------|------------|
@@ -800,7 +800,7 @@ CMD ["npm", "start"]
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are highly welcome! Please follow these steps:
 
@@ -835,13 +835,13 @@ Use the [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📞 Contact
+## Contact
 
 - **Institution:** Stikes Datu Kamanre
 - **Developer:** [@putraAlifSyah](https://github.com/putraAlifSyah)
@@ -850,5 +850,5 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 ---
 
 <p align="center">
-  Built with ❤️ for Stikes Datu Kamanre
+  Built for Stikes Datu Kamanre
 </p>
