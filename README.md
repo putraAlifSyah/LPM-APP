@@ -10,118 +10,118 @@
 
 # 🛡️ LPM-APP
 
-**Sistem Informasi Lembaga Penjaminan Mutu — Stikes Datu Kamanre**
+**Quality Assurance Management System — Stikes Datu Kamanre**
 
-Aplikasi web full-stack untuk mengelola seluruh proses penjaminan mutu internal (SPMI) institusi pendidikan tinggi kesehatan. Dibangun dengan arsitektur modern menggunakan Next.js 16 App Router, Prisma ORM, SQLite, serta dilengkapi dengan **Asisten AI Chatbot cerdas multi-provider** untuk membantu penggunaan aplikasi.
+A full-stack web application designed to manage the entire Internal Quality Assurance System (SPMI) process for a health sciences higher education institution. Built with a modern architecture using Next.js 16 App Router, Prisma ORM, SQLite, and equipped with a **Multi-provider AI Assistant Chatbot** to guide users through the application.
 
 ---
 
-## 📋 Daftar Isi
+## 📋 Table of Contents
 
-- [Tentang Proyek](#-tentang-proyek)
-- [Fitur Utama](#-fitur-utama)
+- [About the Project](#-about-the-project)
+- [Key Features](#-key-features)
 - [Tech Stack](#-tech-stack)
-- [Arsitektur Proyek](#-arsitektur-proyek)
-- [Prasyarat](#-prasyarat)
-- [Instalasi & Setup](#-instalasi--setup)
-- [Menjalankan Aplikasi](#-menjalankan-aplikasi)
-- [Akun Demo](#-akun-demo)
-- [Struktur Database](#-struktur-database)
-- [Hak Akses (RBAC)](#-hak-akses-rbac)
+- [Project Architecture](#-project-architecture)
+- [Prerequisites](#-prerequisites)
+- [Installation & Setup](#-installation--setup)
+- [Running the Application](#-running-the-application)
+- [Demo Accounts](#-demo-accounts)
+- [Database Structure](#-database-structure)
+- [Role-Based Access Control (RBAC)](#-role-based-access-control-rbac)
 - [API Reference](#-api-reference)
-- [Struktur Folder](#-struktur-folder)
-- [Komponen UI](#-komponen-ui)
+- [Folder Structure](#-folder-structure)
+- [UI Components](#-ui-components)
 - [Deployment](#-deployment)
-- [Kontribusi](#-kontribusi)
-- [Lisensi](#-lisensi)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## 📖 Tentang Proyek
+## 📖 About the Project
 
-**LPM-APP** adalah Sistem Informasi Lembaga Penjaminan Mutu yang dirancang khusus untuk **Stikes Datu Kamanre**. Aplikasi ini mendukung siklus PPEPP (Penetapan, Pelaksanaan, Evaluasi, Pengendalian, Peningkatan) sesuai standar **BAN-PT** dan **SPMI**.
+**LPM-APP** is a Quality Assurance Management Information System specifically designed for **Stikes Datu Kamanre**. This application supports the PPEPP cycle (Establishment, Implementation, Evaluation, Control, Improvement) in accordance with **BAN-PT** and **SPMI** standards.
 
-### Latar Belakang
+### Background
 
-Lembaga Penjaminan Mutu (LPM) memiliki peran krusial dalam menjaga dan meningkatkan mutu pendidikan tinggi. Aplikasi ini hadir untuk:
+The Quality Assurance Agency (LPM) plays a crucial role in maintaining and improving the quality of higher education. This application aims to:
 
-- **Digitalisasi** proses manajemen dokumen mutu yang sebelumnya manual
-- **Sentralisasi** data audit, monitoring, dan evaluasi dalam satu platform
-- **Transparansi** capaian kinerja mutu kepada seluruh stakeholder
-- **Efisiensi** pelaporan dan tracking tindak lanjut temuan audit
+- **Digitize** the previously manual quality document management process.
+- **Centralize** audit, monitoring, and evaluation data in a single platform.
+- **Provide transparency** regarding quality performance achievements to all stakeholders.
+- **Improve efficiency** in reporting and tracking audit finding follow-ups.
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
 ### 📊 Dashboard
-- Ringkasan statistik dokumen, audit, dan capaian Monev
-- Distribusi dokumen per kategori dengan progress bar visual
-- Daftar dokumen terbaru dan pengumuman aktif
-- Status audit terakhir beserta timeline
+- Statistical summary of documents, audits, and Monev (Monitoring & Evaluation) achievements.
+- Document distribution by category with visual progress bars.
+- List of recent documents and active announcements.
+- Latest audit status along with its timeline.
 
-### 📄 Manajemen Dokumen
-- Upload, unduh, dan kelola dokumen mutu (PDF, DOCX, dll.)
-- Kategorisasi dokumen: SPMI, Kurikulum, VMTS, Renstra, Laporan, Formulir
-- Mapping dokumen ke standar BAN-PT (C.1.1, C.6.2, dst.)
-- Sistem tag dan pencarian full-text
-- Versioning dokumen dengan riwayat perubahan
-- Soft delete untuk keamanan data
-- Filter berdasarkan kategori, prodi, dan standar
+### 📄 Document Management
+- Upload, download, and manage quality documents (PDF, DOCX, etc.).
+- Document categorization: SPMI, Curriculum, VMTS, Strategic Plan, Reports, Forms.
+- Document mapping to BAN-PT standards (e.g., C.1.1, C.6.2, etc.).
+- Tagging system and full-text search.
+- Document versioning with change history.
+- Soft delete for data security.
+- Filtering by category, study program, and standard.
 
-### 🔍 Audit Mutu Internal (AMI)
-- Perencanaan dan penjadwalan sesi audit
-- Pencatatan temuan audit (Observasi, Ketidaksesuaian Minor, Major)
-- Tracking status temuan: Open → Proses → Closed
-- Mapping temuan ke standar BAN-PT
-- Penetapan deadline dan tindak lanjut
-- Riwayat audit per unit/prodi
+### 🔍 Internal Quality Audit (AMI)
+- Planning and scheduling of audit sessions.
+- Recording of audit findings (Observation, Minor Non-conformity, Major Non-conformity).
+- Tracking of finding status: Open → In Progress → Closed.
+- Mapping of findings to BAN-PT standards.
+- Setting deadlines and follow-up actions.
+- Audit history per unit/study program.
 
-### 📈 Monitoring & Evaluasi (Monev)
-- Input indikator kinerja dengan target terukur
-- Pencatatan capaian per periode semester
-- Perhitungan persentase capaian vs target otomatis
-- Laporan Monev dengan visualisasi chart (Recharts)
-- Filter berdasarkan periode dan unit
+### 📈 Monitoring & Evaluation (Monev)
+- Input of performance indicators with measurable targets.
+- Recording of achievements per semester period.
+- Automatic calculation of achievement vs. target percentage.
+- Monev reports with chart visualizations (Recharts).
+- Filtering by period and unit.
 
-### 📰 Berita & Pengumuman
-- Publikasi berita dan pengumuman LPM
-- Kategorisasi: Berita / Pengumuman
-- Tampilan timeline dengan format tanggal Indonesia
+### 📰 News & Announcements
+- Publication of LPM news and announcements.
+- Categorization: News / Announcements.
+- Timeline display with Indonesian date formats.
 
-### 👥 Manajemen Pengguna
-- CRUD pengguna dengan Role-Based Access Control
-- 4 role: Admin, Auditor, Dosen, Pimpinan
-- Hashing password dengan bcrypt
-- Profil pengguna dengan kemampuan edit mandiri
+### 👥 User Management
+- CRUD operations for users with Role-Based Access Control.
+- 4 roles: Admin, Auditor, Lecturer, Leadership.
+- Password hashing using bcrypt.
+- User profiles with self-edit capabilities.
 
-### 🤖 Asisten AI (Chatbot)
-- **Chatbot mengambang** di pojok kanan bawah untuk semua pengguna yang login
-- **Multi-provider**: OpenAI, Anthropic (Claude), Google Gemini, dan endpoint OpenAI-compatible (OpenRouter, Groq, LM Studio, dll.)
-- **Model bebas diketik** — pilih dari saran atau tulis nama model sendiri
-- **Sadar konteks aplikasi** — AI memahami panduan fitur **dan** membaca data live (jumlah & daftar dokumen, sesi audit, capaian Monev) sesuai hak akses pengguna
-- **Konfigurasi khusus Admin** di halaman `Pengaturan AI` — pilih provider, model, dan API key
-- **API key dienkripsi** (AES-256-GCM) saat disimpan, tidak pernah ditampilkan kembali ke browser
-- **Tes koneksi** ke provider sebelum mengaktifkan
-- Balasan AI dirender sebagai Markdown (tebal, bullet, kode) langsung di dalam chat
+### 🤖 AI Assistant (Chatbot)
+- **Floating chatbot** in the bottom right corner for all logged-in users.
+- **Multi-provider support**: OpenAI, Anthropic (Claude), Google Gemini, and OpenAI-compatible endpoints (OpenRouter, Groq, LM Studio, etc.).
+- **Freely typable models** — choose from suggestions or type your own model name.
+- **Application context-aware** — the AI understands feature guides **and** reads live data (document counts/lists, audit sessions, Monev achievements) based on the user's access rights.
+- **Admin-exclusive configuration** on the `AI Settings` page — select provider, model, and API key.
+- **Encrypted API keys** (AES-256-GCM) when stored, never displayed back to the browser.
+- **Connection testing** to the provider before activation.
+- AI responses are rendered as Markdown (bold, bullet points, code) directly within the chat.
 
-### 🔐 Autentikasi & Keamanan
-- JWT-based authentication (jose library)
-- HTTP-only secure cookies (7 hari masa aktif)
-- Middleware proteksi route otomatis
-- Role-based permission pada setiap aksi
-- Password hashing dengan bcrypt (salt rounds: 10)
-- Enkripsi API key AI dengan AES-256-GCM (Node crypto)
+### 🔐 Authentication & Security
+- JWT-based authentication (jose library).
+- HTTP-only secure cookies (7-day validity).
+- Automatic route protection middleware.
+- Role-based permissions for every action.
+- Password hashing with bcrypt (salt rounds: 10).
+- AI API key encryption using AES-256-GCM (Node crypto).
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Kategori | Teknologi | Versi |
+| Category | Technology | Version |
 |----------|-----------|-------|
 | **Framework** | [Next.js](https://nextjs.org/) (App Router) | 16.2.9 |
 | **UI Library** | [React](https://react.dev/) | 19.2.4 |
-| **Bahasa** | [TypeScript](https://www.typescriptlang.org/) | 5.x |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) | 5.x |
 | **Styling** | [Tailwind CSS](https://tailwindcss.com/) | 4.x |
 | **ORM** | [Prisma](https://www.prisma.io/) | 6.19.3 |
 | **Database** | [SQLite](https://www.sqlite.org/) | - |
@@ -129,12 +129,12 @@ Lembaga Penjaminan Mutu (LPM) memiliki peran krusial dalam menjaga dan meningkat
 | **Icons** | [Lucide React](https://lucide.dev/) | 1.18.0 |
 | **Charts** | [Recharts](https://recharts.org/) | 3.8.1 |
 | **AI Chatbot** | Multi-provider (OpenAI / Anthropic / Gemini / OpenAI-compatible) via REST | - |
-| **Enkripsi** | Node.js `crypto` (AES-256-GCM) untuk API key AI | - |
+| **Encryption** | Node.js `crypto` (AES-256-GCM) for AI API keys | - |
 | **Utilities** | [clsx](https://github.com/lukeed/clsx) + [tailwind-merge](https://github.com/dcastil/tailwind-merge) | - |
 
 ---
 
-## 🏗️ Arsitektur Proyek
+## 🏗️ Project Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -151,7 +151,7 @@ Lembaga Penjaminan Mutu (LPM) memiliki peran krusial dalam menjaga dan meningkat
 │  ┌──────────────────▼───────────────────────────────┐   │
 │  │              Server Components (RSC)             │   │
 │  │  ┌────────┐ ┌────────┐ ┌─────┐ ┌──────────┐     │   │
-│  │  │Dashboard│ │Dokumen │ │Audit│ │  Monev   │     │   │
+│  │  │Dashboard│ │Document │ │Audit│ │  Monev   │     │   │
 │  │  └────────┘ └────────┘ └─────┘ └──────────┘     │   │
 │  └──────────────────┬───────────────────────────────┘   │
 │                     │                                   │
@@ -173,23 +173,23 @@ Lembaga Penjaminan Mutu (LPM) memiliki peran krusial dalam menjaga dan meningkat
 
 ---
 
-## 📋 Prasyarat
+## 📋 Prerequisites
 
-Pastikan sistem Anda telah terinstal:
+Ensure your system has the following installed:
 
-| Software | Versi Minimum | Cek Versi |
+| Software | Minimum Version | Check Version |
 |----------|--------------|-----------|
 | **Node.js** | 18.17+ | `node -v` |
 | **npm** | 9+ | `npm -v` |
 | **Git** | 2.x | `git -v` |
 
-> **💡 Tip:** Disarankan menggunakan Node.js **v20 LTS** atau lebih baru untuk performa terbaik.
+> **💡 Tip:** It is highly recommended to use Node.js **v20 LTS** or newer for optimal performance.
 
 ---
 
-## 🚀 Instalasi & Setup
+## 🚀 Installation & Setup
 
-### 1. Clone Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/putraAlifSyah/LPM-APP.git
@@ -202,27 +202,27 @@ cd LPM-APP
 npm install
 ```
 
-### 3. Konfigurasi Environment
+### 3. Environment Configuration
 
-Buat file `.env` di root proyek:
+Create a `.env` file in the root directory:
 
 ```env
-# Database (SQLite - default untuk development)
+# Database (SQLite - default for development)
 DATABASE_URL="file:./dev.db"
 
-# Secret key untuk JWT (GANTI di produksi!)
-AUTH_SECRET="ganti-dengan-secret-key-yang-aman-dan-panjang"
+# Secret key for JWT (CHANGE in production!)
+AUTH_SECRET="change-this-to-a-secure-and-long-secret-key"
 ```
 
-> ⚠️ **Penting:** Pastikan `AUTH_SECRET` diganti dengan string yang aman dan unik di lingkungan produksi. Gunakan minimal 32 karakter random.
+> ⚠️ **Important:** Ensure `AUTH_SECRET` is changed to a secure and unique string in production environments. Use a minimum of 32 random characters.
 
-### 4. Setup Database
+### 4. Database Setup
 
 ```bash
-# Jalankan migrasi database
+# Run database migrations
 npx prisma migrate dev
 
-# Isi data awal (seed)
+# Populate initial data (seed)
 npm run seed
 ```
 
@@ -234,7 +234,7 @@ npx prisma generate
 
 ---
 
-## ▶️ Menjalankan Aplikasi
+## ▶️ Running the Application
 
 ### Development Mode
 
@@ -242,7 +242,7 @@ npx prisma generate
 npm run dev
 ```
 
-Aplikasi berjalan di: **http://localhost:3000**
+The application will run on: **http://localhost:3000**
 
 ### Production Build
 
@@ -250,7 +250,7 @@ Aplikasi berjalan di: **http://localhost:3000**
 # Build
 npm run build
 
-# Start server produksi
+# Start production server
 npm start
 ```
 
@@ -260,13 +260,13 @@ npm start
 npx prisma studio
 ```
 
-Prisma Studio berjalan di: **http://localhost:5555**
+Prisma Studio will run on: **http://localhost:5555**
 
 ---
 
-## 🔑 Akun Demo
+## 🔑 Demo Accounts
 
-Setelah menjalankan seed, tersedia 4 akun demo:
+After running the seed script, 4 demo accounts will be available:
 
 | Role | Email | Password |
 |------|-------|----------|
@@ -275,30 +275,30 @@ Setelah menjalankan seed, tersedia 4 akun demo:
 | **Dosen** | `dosen@stikesdk.ac.id` | `password123` |
 | **Pimpinan** | `pimpinan@stikesdk.ac.id` | `password123` |
 
-> ℹ️ Halaman login menyediakan tombol quick-fill untuk memudahkan testing.
+> ℹ️ The login page provides quick-fill buttons to simplify testing.
 
 ---
 
-## 🤖 Mengaktifkan Asisten AI
+## 🤖 Activating the AI Assistant
 
-Chatbot AI **nonaktif secara default**. Untuk mengaktifkannya:
+The AI Chatbot is **disabled by default**. To activate it:
 
-1. Login sebagai **Admin**
-2. Buka menu **Pengaturan AI** di sidebar
-3. Pilih **Provider** (OpenAI / Anthropic / Gemini / Custom OpenAI-compatible)
-4. Isi **Model** (pilih saran atau ketik sendiri, mis. `gpt-4o-mini`, `gemini-2.5-flash`, `claude-3-5-haiku`)
-5. Untuk provider **Custom**, isi juga **Base URL** (mis. `https://openrouter.ai/api/v1`)
-6. Tempel **API key** dari provider yang dipilih
-7. Klik **Tes Koneksi** untuk memastikan konfigurasi benar
-8. Aktifkan **toggle** dan klik **Simpan**
+1. Log in as an **Admin**.
+2. Open the **AI Settings** menu in the sidebar.
+3. Select a **Provider** (OpenAI / Anthropic / Gemini / Custom OpenAI-compatible).
+4. Fill in the **Model** (choose a suggestion or type your own, e.g., `gpt-4o-mini`, `gemini-2.5-flash`, `claude-3-5-haiku`).
+5. For a **Custom** provider, also provide the **Base URL** (e.g., `https://openrouter.ai/api/v1`).
+6. Paste the **API key** from the selected provider.
+7. Click **Test Connection** to ensure the configuration is correct.
+8. Enable the **toggle** and click **Save**.
 
-Setelah aktif, chatbot muncul di pojok kanan bawah untuk **semua pengguna** yang login. AI dapat menjawab pertanyaan seputar cara penggunaan fitur maupun data yang ada di aplikasi (dokumen, audit, Monev) sesuai hak akses masing-masing pengguna.
+Once active, the chatbot will appear in the bottom right corner for **all logged-in users**. The AI can answer questions about how to use features or inquire about application data (documents, audits, Monev) according to the respective user's access rights.
 
-> 🔒 **Keamanan:** API key disimpan terenkripsi (AES-256-GCM) di database dan tidak pernah dikirim kembali ke browser dalam bentuk asli.
+> 🔒 **Security:** API keys are stored encrypted (AES-256-GCM) in the database and are never sent back to the browser in their original form.
 
 ---
 
-## 🗄️ Struktur Database
+## 🗄️ Database Structure
 
 ### Entity Relationship Diagram
 
@@ -320,124 +320,124 @@ Setelah aktif, chatbot muncul di pojok kanan bawah untuk **semua pengguna** yang
 └────────────────┘     └──────────────┘
 ```
 
-### Model Detail
+### Detailed Models
 
-#### `User` — Pengguna sistem
-| Field | Tipe | Keterangan |
+#### `User` — System users
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `nama` | String | Nama lengkap |
-| `email` | String | Email unik |
-| `password` | String | Hash bcrypt |
+| `nama` | String | Full name |
+| `email` | String | Unique email |
+| `password` | String | bcrypt hash |
 | `role` | Enum | ADMIN, AUDITOR, DOSEN, PIMPINAN |
-| `prodi` | String? | Program studi (opsional) |
-| `createdAt` | DateTime | Waktu pembuatan |
+| `prodi` | String? | Study program (optional) |
+| `createdAt` | DateTime | Creation time |
 
-#### `Dokumen` — Dokumen mutu
-| Field | Tipe | Keterangan |
+#### `Dokumen` — Quality documents
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `judul` | String | Judul dokumen |
-| `deskripsi` | String? | Deskripsi opsional |
-| `kategori` | String | SPMI, Kurikulum, VMTS, Renstra, Laporan, Formulir |
-| `standar` | String? | Mapping standar BAN-PT |
-| `tags` | String? | Tag (comma-separated) |
-| `namaFile` | String | Nama file asli |
-| `pathFile` | String | Path penyimpanan |
-| `ukuranFile` | Int | Ukuran dalam bytes |
+| `judul` | String | Document title |
+| `deskripsi` | String? | Optional description |
+| `kategori` | String | SPMI, Curriculum, VMTS, Strategic Plan, Report, Form |
+| `standar` | String? | BAN-PT standard mapping |
+| `tags` | String? | Tags (comma-separated) |
+| `namaFile` | String | Original file name |
+| `pathFile` | String | Storage path |
+| `ukuranFile` | Int | Size in bytes |
 | `tipeFile` | String | MIME type |
-| `versi` | Int | Nomor versi (default: 1) |
-| `prodi` | String? | Prodi terkait |
+| `versi` | Int | Version number (default: 1) |
+| `prodi` | String? | Associated study program |
 | `deleted` | Boolean | Soft delete flag |
-| `userId` | String | FK ke User |
+| `userId` | String | FK to User |
 
-#### `RiwayatDokumen` — Riwayat versi dokumen
-| Field | Tipe | Keterangan |
+#### `RiwayatDokumen` — Document version history
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `dokumenId` | String | FK ke Dokumen |
-| `versi` | Int | Nomor versi |
-| `pathFile` | String | Path file versi ini |
-| `namaFile` | String | Nama file versi ini |
-| `catatan` | String? | Catatan perubahan |
+| `dokumenId` | String | FK to Dokumen |
+| `versi` | Int | Version number |
+| `pathFile` | String | File path for this version |
+| `namaFile` | String | File name for this version |
+| `catatan` | String? | Change notes |
 
-#### `Berita` — Berita & Pengumuman
-| Field | Tipe | Keterangan |
+#### `Berita` — News & Announcements
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `judul` | String | Judul berita |
-| `isi` | String | Konten berita |
-| `kategori` | String | "Berita" atau "Pengumuman" |
-| `userId` | String | FK ke User (penulis) |
+| `judul` | String | News title |
+| `isi` | String | News content |
+| `kategori` | String | "Berita" (News) or "Pengumuman" (Announcement) |
+| `userId` | String | FK to User (author) |
 
-#### `IndikatorMonev` — Indikator Monitoring & Evaluasi
-| Field | Tipe | Keterangan |
+#### `IndikatorMonev` — Monitoring & Evaluation Indicators
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `nama` | String | Nama indikator |
-| `standar` | String | Standar BAN-PT |
-| `satuan` | String | Satuan pengukuran |
-| `targetNilai` | Float | Nilai target |
-| `periode` | String | Periode (e.g. "2024-Ganjil") |
+| `nama` | String | Indicator name |
+| `standar` | String | BAN-PT standard |
+| `satuan` | String | Measurement unit |
+| `targetNilai` | Float | Target value |
+| `periode` | String | Period (e.g., "2024-Odd") |
 
-#### `CapaianMonev` — Capaian per indikator
-| Field | Tipe | Keterangan |
+#### `CapaianMonev` — Achievements per indicator
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `indikatorId` | String | FK ke IndikatorMonev |
-| `nilaiCapaian` | Float | Nilai capaian aktual |
-| `keterangan` | String? | Keterangan tambahan |
-| `periode` | String | Periode capaian |
-| `unit` | String? | Unit yang dilaporkan |
+| `indikatorId` | String | FK to IndikatorMonev |
+| `nilaiCapaian` | Float | Actual achievement value |
+| `keterangan` | String? | Additional notes |
+| `periode` | String | Achievement period |
+| `unit` | String? | Reporting unit |
 
-#### `AuditSesi` — Sesi Audit Mutu Internal
-| Field | Tipe | Keterangan |
+#### `AuditSesi` — Internal Quality Audit Sessions
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `nama` | String | Nama sesi audit |
-| `tanggalMulai` | DateTime | Tanggal mulai |
-| `tanggalSelesai` | DateTime | Tanggal selesai |
-| `auditorId` | String | FK ke User (auditor) |
-| `unitAudit` | String | Unit yang diaudit |
-| `status` | Enum | RENCANA, BERLANGSUNG, SELESAI |
+| `nama` | String | Audit session name |
+| `tanggalMulai` | DateTime | Start date |
+| `tanggalSelesai` | DateTime | End date |
+| `auditorId` | String | FK to User (auditor) |
+| `unitAudit` | String | Unit being audited |
+| `status` | Enum | PLANNED, ONGOING, COMPLETED |
 
-#### `Temuan` — Temuan audit
-| Field | Tipe | Keterangan |
+#### `Temuan` — Audit findings
+| Field | Type | Description |
 |-------|------|------------|
 | `id` | String (CUID) | Primary key |
-| `sesiId` | String | FK ke AuditSesi |
-| `deskripsi` | String | Deskripsi temuan |
-| `kategori` | String | Observasi, Ketidaksesuaian Minor, Major |
-| `standar` | String? | Standar BAN-PT terkait |
-| `tindakLanjut` | String? | Rencana tindak lanjut |
-| `statusTemuan` | Enum | OPEN, PROSES, CLOSED |
-| `deadline` | DateTime? | Tenggat waktu |
+| `sesiId` | String | FK to AuditSesi |
+| `deskripsi` | String | Finding description |
+| `kategori` | String | Observation, Minor Non-conformity, Major |
+| `standar` | String? | Related BAN-PT standard |
+| `tindakLanjut` | String? | Follow-up plan |
+| `statusTemuan` | Enum | OPEN, IN_PROGRESS, CLOSED |
+| `deadline` | DateTime? | Deadline |
 
 ---
 
-## 🔐 Hak Akses (RBAC)
+## 🔐 Role-Based Access Control (RBAC)
 
-Sistem menggunakan **Role-Based Access Control** dengan 4 role:
+The system utilizes **Role-Based Access Control** with 4 roles:
 
-| Aksi | Admin | Auditor | Dosen | Pimpinan |
+| Action | Admin | Auditor | Lecturer | Leadership |
 |------|:-----:|:-------:|:-----:|:--------:|
-| Upload Dokumen | ✅ | ✅ | ✅ | ❌ |
-| Hapus Dokumen | ✅ | ❌ | ❌ | ❌ |
+| Upload Document | ✅ | ✅ | ✅ | ❌ |
+| Delete Document | ✅ | ❌ | ❌ | ❌ |
 | Input Monev | ✅ | ❌ | ✅ | ❌ |
-| Buat Audit | ✅ | ✅ | ❌ | ❌ |
-| Input Temuan | ✅ | ✅ | ❌ | ❌ |
-| Kelola User | ✅ | ❌ | ❌ | ❌ |
-| Buat Berita | ✅ | ❌ | ❌ | ❌ |
-| Lihat Laporan | ✅ | ✅ | ✅ | ✅ |
-| Konfigurasi AI | ✅ | ❌ | ❌ | ❌ |
-| Gunakan Chatbot AI | ✅ | ✅ | ✅ | ✅ |
+| Create Audit | ✅ | ✅ | ❌ | ❌ |
+| Input Finding | ✅ | ✅ | ❌ | ❌ |
+| Manage Users | ✅ | ❌ | ❌ | ❌ |
+| Create News | ✅ | ❌ | ❌ | ❌ |
+| View Reports | ✅ | ✅ | ✅ | ✅ |
+| Configure AI | ✅ | ❌ | ❌ | ❌ |
+| Use AI Chatbot | ✅ | ✅ | ✅ | ✅ |
 
-### Penjelasan Role
+### Role Explanations
 
-- **Admin** — Akses penuh ke seluruh fitur sistem, termasuk manajemen pengguna
-- **Auditor** — Fokus pada kegiatan audit: membuat sesi audit, mencatat temuan
-- **Dosen / Staff** — Upload dokumen mutu dan input data Monev
-- **Pimpinan** — Akses read-only untuk melihat laporan dan dashboard
+- **Admin** — Full access to all system features, including user management.
+- **Auditor** — Focuses on audit activities: creating audit sessions, recording findings.
+- **Lecturer / Staff** — Upload quality documents and input Monev data.
+- **Leadership** — Read-only access to view reports and dashboards.
 
 ---
 
@@ -446,7 +446,7 @@ Sistem menggunakan **Role-Based Access Control** dengan 4 role:
 ### Authentication
 
 #### `POST /api/auth/login`
-Login dan mendapatkan session cookie.
+Logs in and obtains a session cookie.
 
 **Request Body:**
 ```json
@@ -472,201 +472,201 @@ Login dan mendapatkan session cookie.
 **Response (401):**
 ```json
 {
-  "error": "Email atau password salah"
+  "error": "Incorrect email or password"
 }
 ```
 
 #### `POST /api/auth/logout`
-Logout dan menghapus session cookie.
+Logs out and removes the session cookie.
 
 ---
 
-### Dokumen
+### Documents
 
 #### `GET /api/dokumen`
-Mengambil daftar dokumen (dengan filter opsional).
+Retrieves a list of documents (with optional filters).
 
 **Query Parameters:**
-| Parameter | Tipe | Keterangan |
+| Parameter | Type | Description |
 |-----------|------|------------|
-| `kategori` | string | Filter berdasarkan kategori |
-| `prodi` | string | Filter berdasarkan program studi |
-| `search` | string | Pencarian berdasarkan judul/tags |
+| `kategori` | string | Filter by category |
+| `prodi` | string | Filter by study program |
+| `search` | string | Search by title/tags |
 
 #### `POST /api/dokumen`
-Upload dokumen baru (multipart/form-data).
+Uploads a new document (multipart/form-data).
 
 #### `GET /api/dokumen/[id]`
-Detail dokumen beserta riwayat versi.
+Document details along with version history.
 
 #### `DELETE /api/dokumen/[id]`
-Soft delete dokumen (khusus Admin).
+Soft deletes a document (Admin only).
 
 ---
 
 ### Audit
 
 #### `GET /api/audit`
-Daftar sesi audit.
+List of audit sessions.
 
 #### `POST /api/audit`
-Buat sesi audit baru.
+Creates a new audit session.
 
 #### `GET /api/audit/[id]`
-Detail sesi audit beserta temuan.
+Audit session details and findings.
 
 ---
 
-### Temuan
+### Findings
 
 #### `POST /api/temuan`
-Tambah temuan ke sesi audit.
+Adds a finding to an audit session.
 
 #### `PATCH /api/temuan/[id]`
-Update status atau detail temuan.
+Updates the status or details of a finding.
 
 ---
 
-### Monitoring & Evaluasi
+### Monitoring & Evaluation
 
 #### `GET /api/monev`
-Daftar indikator Monev beserta capaian.
+List of Monev indicators and achievements.
 
 #### `POST /api/monev`
-Tambah indikator Monev baru.
+Adds a new Monev indicator.
 
 #### `POST /api/monev/capaian`
-Input capaian untuk indikator.
+Inputs achievement data for an indicator.
 
 ---
 
-### Berita
+### News
 
 #### `GET /api/berita`
-Daftar berita dan pengumuman.
+List of news and announcements.
 
 #### `POST /api/berita`
-Buat berita/pengumuman baru.
+Creates new news/announcement.
 
 #### `GET /api/berita/[id]`
-Detail berita.
+News details.
 
 ---
 
-### Pengguna
+### Users
 
 #### `GET /api/pengguna`
-Daftar pengguna (khusus Admin).
+List of users (Admin only).
 
 #### `POST /api/pengguna`
-Tambah pengguna baru (khusus Admin).
+Adds a new user (Admin only).
 
 #### `PATCH /api/pengguna/[id]`
-Update data pengguna.
+Updates user data.
 
 #### `DELETE /api/pengguna/[id]`
-Hapus pengguna.
+Deletes a user.
 
 ---
 
-### Profil
+### Profile
 
 #### `GET /api/profil`
-Ambil profil pengguna yang login.
+Retrieves the logged-in user's profile.
 
 #### `PATCH /api/profil`
-Update profil (nama, email, password).
+Updates profile (name, email, password).
 
 ---
 
-### Asisten AI
+### AI Assistant
 
 #### `GET /api/ai/config`
-Ambil konfigurasi AI. Pengguna biasa hanya menerima status `enabled`; Admin menerima detail konfigurasi (API key dalam bentuk masked).
+Retrieves AI configuration. Regular users only receive the `enabled` status; Admins receive the configuration details (masked API key).
 
 #### `PUT /api/ai/config`
-Simpan konfigurasi AI — provider, model, base URL, API key (terenkripsi), dan toggle aktif. **Khusus Admin.**
+Saves AI configuration — provider, model, base URL, API key (encrypted), and active toggle. **Admin only.**
 
 #### `POST /api/ai/test`
-Uji koneksi ke provider AI dengan konfigurasi yang dikirim atau yang tersimpan. **Khusus Admin.**
+Tests the connection to the AI provider using the provided or saved configuration. **Admin only.**
 
 #### `POST /api/ai/chat`
-Kirim pesan ke Asisten AI. Server menyusun system prompt (panduan + data live + hak akses pengguna) lalu meneruskan ke provider. Tersedia untuk semua pengguna login (jika AI aktif).
+Sends a message to the AI Assistant. The server constructs the system prompt (guide + live data + user rights) and forwards it to the provider. Available to all logged-in users (if AI is enabled).
 
 **Request Body:**
 ```json
 {
   "messages": [
-    { "role": "user", "content": "Bagaimana cara upload dokumen?" }
+    { "role": "user", "content": "How do I upload a document?" }
   ]
 }
 ```
 
 ---
 
-## 📁 Struktur Folder
+## 📁 Folder Structure
 
 ```
 lpm/
 ├── prisma/
-│   ├── schema.prisma          # Schema database
-│   ├── seed.ts                # Data awal (seed)
-│   ├── migrations/            # Migrasi database
+│   ├── schema.prisma          # Database schema
+│   ├── seed.ts                # Initial data (seed)
+│   ├── migrations/            # Database migrations
 │   └── dev.db                 # SQLite database (gitignored)
 │
 ├── public/
-│   └── uploads/               # File dokumen yang diupload
+│   └── uploads/               # Uploaded document files
 │
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx         # Root layout (font, metadata)
-│   │   ├── page.tsx           # Redirect ke dashboard
+│   │   ├── layout.tsx         # Root layout (fonts, metadata)
+│   │   ├── page.tsx           # Redirects to dashboard
 │   │   ├── globals.css        # Global styles + Tailwind
 │   │   ├── login/
-│   │   │   └── page.tsx       # Halaman login
-│   │   ├── not-found.tsx      # Halaman 404
-│   │   ├── global-error.tsx   # Error boundary global
+│   │   │   └── page.tsx       # Login page
+│   │   ├── not-found.tsx      # 404 page
+│   │   ├── global-error.tsx   # Global error boundary
 │   │   │
 │   │   ├── (app)/             # Route group (authenticated)
-│   │   │   ├── layout.tsx     # Layout dengan Sidebar + Navbar
+│   │   │   ├── layout.tsx     # Layout with Sidebar + Navbar
 │   │   │   ├── dashboard/
-│   │   │   │   └── page.tsx   # Dashboard utama
+│   │   │   │   └── page.tsx   # Main dashboard
 │   │   │   ├── dokumen/
-│   │   │   │   ├── page.tsx   # Daftar dokumen
-│   │   │   │   └── [id]/      # Detail dokumen
+│   │   │   │   ├── page.tsx   # Document list
+│   │   │   │   └── [id]/      # Document details
 │   │   │   ├── audit/
-│   │   │   │   ├── page.tsx   # Daftar audit
-│   │   │   │   ├── buat/      # Form buat audit
-│   │   │   │   └── [id]/      # Detail audit + temuan
+│   │   │   │   ├── page.tsx   # Audit list
+│   │   │   │   ├── buat/      # Create audit form
+│   │   │   │   └── [id]/      # Audit details + findings
 │   │   │   ├── monev/
-│   │   │   │   ├── page.tsx   # Tabel indikator Monev
-│   │   │   │   └── laporan/   # Laporan Monev (chart)
+│   │   │   │   ├── page.tsx   # Monev indicator table
+│   │   │   │   └── laporan/   # Monev report (charts)
 │   │   │   ├── berita/
-│   │   │   │   ├── page.tsx   # Daftar berita
-│   │   │   │   ├── buat/      # Form buat berita
-│   │   │   │   └── [id]/      # Detail berita
+│   │   │   │   ├── page.tsx   # News list
+│   │   │   │   ├── buat/      # Create news form
+│   │   │   │   └── [id]/      # News details
 │   │   │   ├── pengguna/
-│   │   │   │   └── page.tsx   # Manajemen pengguna
+│   │   │   │   └── page.tsx   # User management
 │   │   │   └── profil/
-│   │   │       └── page.tsx   # Profil pengguna
+│   │   │       └── page.tsx   # User profile
 │   │   │
 │   │   └── api/               # API Route Handlers
 │   │       ├── auth/
 │   │       │   ├── login/     # POST login
 │   │       │   └── logout/    # POST logout
-│   │       ├── dokumen/       # CRUD dokumen
-│   │       ├── audit/         # CRUD audit
-│   │       ├── temuan/        # CRUD temuan
+│   │       ├── dokumen/       # CRUD documents
+│   │       ├── audit/         # CRUD audits
+│   │       ├── temuan/        # CRUD findings
 │   │       ├── monev/         # CRUD monev
-│   │       ├── berita/        # CRUD berita
-│   │       ├── pengguna/      # CRUD pengguna
+│   │       ├── berita/        # CRUD news
+│   │       ├── pengguna/      # CRUD users
 │   │       └── profil/        # Profile endpoints
 │   │
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── sidebar.tsx    # Sidebar navigasi
+│   │   │   ├── sidebar.tsx    # Sidebar navigation
 │   │   │   ├── navbar.tsx     # Top navbar
-│   │   │   └── page-header.tsx # Header halaman
+│   │   │   └── page-header.tsx # Page header
 │   │   ├── modules/
 │   │   │   ├── audit-detail.tsx
 │   │   │   ├── buat-audit-form.tsx
@@ -706,75 +706,75 @@ lpm/
 
 ---
 
-## 🧩 Komponen UI
+## 🧩 UI Components
 
-Aplikasi menggunakan komponen UI custom yang konsisten:
+The application uses consistent custom UI components:
 
 ### `<Button>`
-Tombol dengan variasi: `primary` (default), `secondary`, `danger`, `ghost`. Mendukung prop `size`, `disabled`, dan `loading`.
+Button with variations: `primary` (default), `secondary`, `danger`, `ghost`. Supports `size`, `disabled`, and `loading` props.
 
 ### `<Card>`, `<CardHeader>`, `<CardContent>`, `<CardTitle>`
-Container card untuk menampilkan konten terstruktur.
+Card container for displaying structured content.
 
 ### `<Badge>`
-Label berwarna dengan `tone`: `blue`, `green`, `yellow`, `red`, `gray`, `purple`.
+Colored label with `tone`: `blue`, `green`, `yellow`, `red`, `gray`, `purple`.
 
 ### `<Input>`, `<Label>`
-Form input dan label yang sudah distilasi.
+Styled form inputs and labels.
 
 ### `<Modal>`
-Dialog overlay untuk konfirmasi dan form inline.
+Overlay dialog for confirmations and inline forms.
 
 ### `<Table>`, `<Thead>`, `<Tbody>`, `<Tr>`, `<Th>`, `<Td>`
-Komponen tabel yang responsif.
+Responsive table component.
 
 ### Layout Components
-- **`<Sidebar>`** — Navigasi samping dengan menu dinamis berdasarkan role
-- **`<Navbar>`** — Top bar dengan info user dan tombol logout
-- **`<PageHeader>`** — Header halaman dengan title dan description
+- **`<Sidebar>`** — Side navigation with dynamic menus based on role.
+- **`<Navbar>`** — Top bar with user info and logout button.
+- **`<PageHeader>`** — Page header with title and description.
 
 ---
 
 ## 🚢 Deployment
 
-### Opsi 1: Vercel (Rekomendasi)
+### Option 1: Vercel (Recommended)
 
-1. Push kode ke GitHub
-2. Import proyek di [vercel.com](https://vercel.com)
+1. Push code to GitHub.
+2. Import the project on [vercel.com](https://vercel.com).
 3. Set environment variables:
    ```
    DATABASE_URL=file:./dev.db
    AUTH_SECRET=your-production-secret-key
    ```
-4. Deploy otomatis!
+4. Deploy automatically!
 
-> ⚠️ Untuk produksi, pertimbangkan migrasi dari SQLite ke **PostgreSQL** atau **MySQL** agar mendukung concurrent access.
+> ⚠️ For production, consider migrating from SQLite to **PostgreSQL** or **MySQL** to support concurrent access.
 
-### Opsi 2: Self-Hosted (VPS)
+### Option 2: Self-Hosted (VPS)
 
 ```bash
-# Clone dan install
+# Clone and install
 git clone https://github.com/putraAlifSyah/LPM-APP.git
 cd LPM-APP
 npm install
 
 # Setup environment
 cp .env.example .env
-# Edit .env sesuai kebutuhan
+# Edit .env as needed
 
 # Setup database
 npx prisma migrate deploy
 npm run seed
 
-# Build dan jalankan
+# Build and start
 npm run build
 npm start
 ```
 
-### Opsi 3: Docker (Coming Soon)
+### Option 3: Docker (Coming Soon)
 
 ```dockerfile
-# Dockerfile (contoh dasar)
+# Dockerfile (basic example)
 FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -788,67 +788,67 @@ CMD ["npm", "start"]
 
 ---
 
-## 📝 Script yang Tersedia
+## 📝 Available Scripts
 
-| Script | Perintah | Keterangan |
+| Script | Command | Description |
 |--------|----------|------------|
-| `dev` | `npm run dev` | Jalankan development server |
-| `build` | `npm run build` | Build produksi |
-| `start` | `npm start` | Jalankan production server |
-| `lint` | `npm run lint` | Jalankan ESLint |
-| `seed` | `npm run seed` | Isi database dengan data awal |
+| `dev` | `npm run dev` | Starts the development server |
+| `build` | `npm run build` | Production build |
+| `start` | `npm start` | Starts the production server |
+| `lint` | `npm run lint` | Runs ESLint |
+| `seed` | `npm run seed` | Populates the database with initial data |
 
 ---
 
-## 🤝 Kontribusi
+## 🤝 Contributing
 
-Kontribusi sangat diterima! Silakan ikuti langkah berikut:
+Contributions are highly welcome! Please follow these steps:
 
-1. **Fork** repository ini
-2. Buat **branch** fitur baru:
+1. **Fork** this repository.
+2. Create a new feature **branch**:
    ```bash
-   git checkout -b fitur/fitur-baru
+   git checkout -b feature/new-feature
    ```
-3. **Commit** perubahan:
+3. **Commit** your changes:
    ```bash
-   git commit -m "feat: tambah fitur baru"
+   git commit -m "feat: add new feature"
    ```
-4. **Push** ke branch:
+4. **Push** to the branch:
    ```bash
-   git push origin fitur/fitur-baru
+   git push origin feature/new-feature
    ```
-5. Buat **Pull Request**
+5. Open a **Pull Request**.
 
-### Konvensi Commit
+### Commit Conventions
 
-Gunakan format [Conventional Commits](https://www.conventionalcommits.org/):
+Use the [Conventional Commits](https://www.conventionalcommits.org/) format:
 
-| Prefix | Keterangan |
+| Prefix | Description |
 |--------|------------|
-| `feat:` | Fitur baru |
-| `fix:` | Perbaikan bug |
-| `docs:` | Perubahan dokumentasi |
-| `style:` | Perubahan styling (tanpa perubahan logika) |
-| `refactor:` | Refactoring kode |
-| `test:` | Penambahan/perbaikan test |
-| `chore:` | Perubahan build/tooling |
+| `feat:` | New feature |
+| `fix:` | Bug fix |
+| `docs:` | Documentation changes |
+| `style:` | Styling changes (no logic changes) |
+| `refactor:` | Code refactoring |
+| `test:` | Adding/fixing tests |
+| `chore:` | Build/tooling changes |
 
 ---
 
-## 📄 Lisensi
+## 📄 License
 
-Proyek ini dilisensikan di bawah **MIT License**. Lihat file [LICENSE](LICENSE) untuk detail.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📞 Kontak
+## 📞 Contact
 
-- **Institusi:** Stikes Datu Kamanre
+- **Institution:** Stikes Datu Kamanre
 - **Developer:** [@putraAlifSyah](https://github.com/putraAlifSyah)
 - **Repository:** [github.com/putraAlifSyah/LPM-APP](https://github.com/putraAlifSyah/LPM-APP)
 
 ---
 
 <p align="center">
-  Dibuat dengan ❤️ untuk Stikes Datu Kamanre
+  Built with ❤️ for Stikes Datu Kamanre
 </p>
